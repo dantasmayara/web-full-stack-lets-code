@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 01 - Variáveis / Constantes; Sistema de Tipos / Hoisting; Artimética Computacional</title>
+</head>
+<body>
+    <script>
+        // VARIÁVEIS DECLARADAS USANDO VAR
+        var xp = 1000.5;
+        // var variavel_safadona;
+
+        console.log(xp);
+
+        xp = xp + 1;
+
+        console.log(xp);
+
+        xp = xp - 2;
+
+        console.log(xp);
+
+        xp = xp * 4;
+
+        console.log(xp);
+
+        xp = xp / 2;
+
+        console.log(xp);
+
+        console.log(10/3);
+
+        console.log(64%2);
+
+        xp = "olá, \"tudo bem\"?";
+
+        console.log(xp + "\nNão sei...");
+
+        var boolean = true;
+
+        console.log(boolean);
+
+        console.log(variavel_safadona);
+
+        var variavel_safadona = "olá";
+
+        // console.log(variavel_nao_tao_safadona); <- Resulta em erro
+        let variavel_nao_tao_safadona = "hello";
+
+        variavel_nao_tao_safadona = false;
+        console.log(variavel_nao_tao_safadona);
+
+        const naturalidade = "paraibana";
+
+        console.log(naturalidade);
+
+        let numero_qualquer = parseInt(prompt("Digite um número qualquer: "));
+
+        console.log(numero_qualquer);
+
+        // naturalidade = 6; <- Resulta em erro
+        let variavel_bonitinha = null;
+        console.log(variavel_bonitinha);
+
+        console.log('10' + 3);
+        console.log(10 + parseInt('3'));
+        console.log(10 + parseInt('3.9'));
+        console.log(10 + parseFloat('3.1'));
+
+        let numero = 123445;
+        console.log(numero.toString());
+        let variavel_qualquer = 0b10001;
+        console.log(parseInt('1010', 2));
+        console.log(variavel_qualquer);
+        
+        let char = 0b01110100;
+        console.log(char.toString());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03 - Condicionais; Truthy e Falsy</title>
+</head>
+<body>
+    <script>
+        // // let sexo = prompt("Digite o seu sexo (F ou M):");
+        // let altura = parseFloat(prompt("Digite a sua altura (em m):"));
+        // let peso = parseFloat(prompt("Digite o seu peso (em kg):"));
+
+        // function calcula_imc(peso, altura) {
+        //     return peso/altura**2;
+        // }
+
+        // let imc = calcula_imc(peso, altura);
+        // alert(`O seu IMC é: ${imc.toFixed(2)}`);
+        // // alert("O seu IMC é: " + imc);
+
+        // // Abaixo de 18.5 - Baixo peso
+        // // 18.5 - 24.9 - Peso normal
+        // // 25 - 29.9: Sobrepeso
+        // // 30 - 34.9: Obesidade Grau I
+        // // 35 - 39.9: Obesidade Grau II
+        // // A partir de 40: Obseidade Grau III
+
+        // // if (imc < 18.5) {
+        // //     alert("Você está na categoria: Baixo peso.");
+        // // } else { // (imc >= 18.5)
+        // //     alert("Você está na categoria: Peso normal.");
+        // // }
+
+        // if (imc < 18.5) {
+        //     alert("Você está na categoria: Baixo Peso.");
+        // } else if (imc < 25) { // (imc >= 18.5)
+        //     alert("Você está na categoria: Peso Normal.");
+        // } else if (imc < 30) { // (imc >= 25)
+        //     alert("Você está na categoria: Sobrepeso.");
+        // } else if (imc < 35) { // (imc >= 30)
+        //     alert("Você está na categoria: Obesidade Grau I.");
+        // } else if (imc < 40) { // (imc >= 35)
+        //     alert("Você está na categoria: Obesidade Grau II.");
+        // } else { // (imc >= 40)
+        //     alert("Você está na categoria: Obesidade Grau III.");
+        // }
+
+        // // == -> Comparando valores (igual a)
+        // // === -> Comparando valores e tipo (igual a)
+        // // != -> Comparando valores (diferente de)
+        // // !== -> Comparando valores e tipo (diferente de)
+        // teste = "01";
+        // if (teste == 1) {
+        //     console.log("Passou!");
+        // }
+
+        // if (teste === "01") {
+        //     console.log("Passou!");
+        // } else {
+        //     console.log("NÃO Passou!");
+        // }
+
+        // let condicao = imc < 18.5;
+
+        // console.log(condicao);
+
+        // Truthy e Falsy
+        let num = 0;
+        if (num) {
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        // Truthy e Falsy
+        if (-5678) {
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        // Truthy e Falsy
+        if ("asdasdasdas") {
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        // Truthy e Falsy
+        if (undefined) {
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        // Truthy e Falsy
+        if (null) {
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        // Truthy e Falsy
+        if (parseFloat("aslkdas")) { // NaN
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        // Truthy e Falsy
+        if ("") {
+            console.log("Truthy");
+        } else {
+            console.log("Falsy");
+        }
+
+        let pi = parseInt;
+
+        console.log(pi);
+
+        num = pi(prompt("Digite um número: "));
+        if (num || num == 0) alert("Valor válido!");
+        else alert("Valor inválido!");
+
+        alert((num || num == 0)? "Valor válido!" : "Valor inválido!");
+    </script>
+</body>
+</html>

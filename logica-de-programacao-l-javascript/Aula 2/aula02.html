@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 02 - Funções; Funções Básicas</title>
+</head>
+<body>
+    <script>
+        ///////// NÃO USEM VAR, PLEASE!
+        // var a;
+        // console.log(a);
+
+        // a = 6;
+
+        // console.log(a);
+
+        // var a = 5;
+
+        // console.log(a);
+        ///////// NÃO USEM VAR, PLEASE!
+
+        console.log(converte_farh_celsius(89));
+
+        console.log(C);
+
+        // f(x) = x + 5 -> Declaração/Definição
+        // f(2) => 7 -> Chamar/Executar/Invocar
+
+        function soma_5(x) {
+            return x + 5;
+        }
+
+        console.log(soma_5(2));
+
+        function soma(x, y) {
+            return x + y;
+        }
+
+        console.log(soma(5, 2));
+        console.log(soma(6, 19));
+
+        function converte_farh_celsius(F) {
+            // var C;
+            C = 5 * ((F-32) / 9);
+            
+            return C;
+        }
+
+        console.log(converte_farh_celsius(89));
+
+        console.log(C); // <- Não funciona, C está no escopo da função
+
+        console.log(converte_farh_celsius(76));
+
+        console.log(C);
+
+        // Malefícios do uso do "VAR":
+        // - Hoisting (undefined antes da linha da inicialização);
+        // - O código deixa de ser 100% sequencial.
+
+        // Função global
+        function print(texto) {
+            console.log(texto);
+            // return;
+        }
+
+        print("olá, tudo bem?");
+        console.log(print("não, você ta usando 'var', para com isso!"));
+
+        console.log(print_boladao);
+        // print_boladao("Ainda estou bugado com variáveis globais...");
+
+        // Função anônima
+        var print_boladao = function(texto) {
+            console.log(texto);
+        }
+
+        print_boladao("Ainda estou bugado com variáveis globais...");
+
+        // Arrow function
+        const print_mais_boladao = (texto) => console.log(texto);
+
+        print_mais_boladao("Mind-blowing!!");
+
+        // Funções da biblioteca Math
+        console.log(Math.abs(100)); // Valor absoluto
+        console.log(Math.abs(-1)); // Valor absoluto
+        console.log(Math.ceil(8.000000000001));
+        console.log(Math.floor(8.99999999999));
+        console.log(parseInt(7.8));
+        console.log(Math.round(8.6));
+        console.log(Math.round(8.3));
+        console.log(parseFloat(C.toFixed(2)));
+        // console.log(eval("variavel = 9;")); -> "JÁ FALEI QUE VAI DÁ MERDA..."
+
+        console.log(Math.min(1,2,4,5));
+        console.log(Math.max(1,2,4,3));
+
+        console.log(2**3);
+        console.log(Math.pow(2, 3));
+        console.log(2**(1/6));
+        console.log(Math.sqrt(2));
+
+        console.log(Math.PI);
+        console.log(Math.random()*(20 - 10) + 10);
+    </script>
+</body>
+</html>
