@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 3 - CSS Seletores</title>
+  <style>
+        * {margin: 0;}
+
+        /* Seletor por tag */
+        h1 {
+            color: blue;
+        }
+
+        h2 {
+            color: green;
+            margin: 10px;
+        }
+
+        /* Seletor por classe */
+        . titulo
+        . subtitulo {
+            color: red;
+        }
+
+        h2.subtitulo {
+            background-color: yellow;
+            width: 50vw;
+            height: bold;
+        }
+
+        /* Seletor por ID */
+        #negrito {
+            font-weight: bold;
+        }
+
+        /* Seletor por atribulo */
+        a[title] {
+            color: red;
+        }
+
+        a[title="titulo-1"] {
+            color: black;
+        }
+
+        p[class~="texto"] {
+            font-size: 32px;
+        }
+
+        p[class|="texto-qualquer"] {
+          margin-top: 24px;
+        }
+
+        p[class|="texto"] {
+          margin-top: 24px;
+        }
+
+        p[class^="texto"] {
+            border: 1px solid black;
+        }
+
+        p[class$="verde"] {
+            color: green
+        }
+
+        p[class$="verde"] {
+            color: blue
+        }
+    </style>
+</head>
+<body>
+    <h1 class="titulo">Este é um título</h1>
+    <h2 id="negrito" class="subtitulo">Este é um subtítulo</h2>
+    <h3 class="yellow">Este é um h3</h3>
+    <p id="negrito">Este é um parágrafo</p>
+    <p>Este é outro parágrafo</p>
+
+    <a href="https://google.com" title="titulo-1">Este é um link</a><br>
+    <a href="https://google.com" title="titulo-2">Este é um link</a><br>
+    <a href="https://google.com" title="titulo-3">Este é um link</a>
+
+    <p class="texto texto-especial">Um texto qualquer</p>
+    
+    <p class="texto-qualquer">Outro texto qualquer</p>
+    
+    <p class="paragrafo-verde">Parágrafo verde</p>
+
+    <a href="https://google.com" title="titulo-3">Este é um link</a>
+</body>
+</html>
