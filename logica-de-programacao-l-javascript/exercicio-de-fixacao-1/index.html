@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Exercício de Fixação 1</title>
+</head>
+<body>
+    <script>
+        //Faça um Programa que peça as 4 notas bimestrais e mostre a média;
+
+        function media(n1, n2, n3, n4) {
+            let n_media = (n1 + n2 + n3 + n4) / 4;
+            return n_media;
+        }
+
+        let n1 = parseFloat(prompt("Digite a nota 1:"));
+        let n2 = parseFloat(prompt("Digite a nota 2:"));
+        let n3 = parseFloat(prompt("Digite a nota 3:"));
+        let n4 = parseFloat(prompt("Digite a nota 4:"));
+
+        console.log("A média é: " + media(n1, n2, n3, n4))
+
+        //Faça um Programa que peça o raio de um círculo, calcule e mostre sua área;
+
+        function area(raio) {
+            let area_circulo = Math.PI * raio**2;
+            return area_circulo;
+        }
+
+        let r = parseFloat(prompt("Digite o raio:"));
+
+        console.log("A área do círculo é: " + area(r));
+
+        //Faça um Programa que peça a temperatura em graus Fahrenheit, transforme e mostre a temperatura em graus Celsius. C = 5 * ((F-32) / 9);
+
+        function temperatura(f) {
+            let c = 5 * ((f-32) / 9);
+            return c;
+        }    
+
+        let f = parseFloat(prompt("Digite a temperatura em Fahrenheit:"));
+
+        console.log("A temperatura em graus Celsius é: " + temperatura(f));
+
+        //Faça um programa que calcule e mostre a área e o perímetro de uma sala retangular cujas medidas são fornecidas pelo usuário;
+
+        function area_sala(largura, comprimento) {
+            let area_total = largura * comprimento;
+            return area_total;
+        }
+
+        function perimetro_sala(largura, comprimento) {
+            let perimetro_total = ((largura * 2) + (comprimento * 2));
+            return perimetro_total;
+        }
+
+        let largura = parseFloat(prompt("Digite a largura da sala:"));
+        let comprimento = parseFloat(prompt("Digite o comprimento da sala:"));
+
+        console.log("A área da sala é: " + area_sala(largura, comprimento));
+        console.log("O perímetro da sala é: " + perimetro_sala(largura, comprimento));
+
+        //Escreva um programa para ler as dimensões de uma cozinha retangular, em seguida calcular e escrever a quantidade de caixas de azulejos necessárias para cobrir o chão da cozinha. Cada caixa de azulejos possui 2,5 m2.
+
+        function paginacao(larg, comp) {
+            let areac_total = larg * comp;
+            let paginacao = areac_total / 2.5;
+            return paginacao;            
+        }
+
+        let larg = parseFloat(prompt("Digite a largura da cozinha:"));
+        let comp = parseFloat(prompt("Digite o comprimento da cozinha:"));
+
+        console.log("A quantidade de caixas de azulejos é: " + paginacao(larg, comp));
+
+    </script>
+    
+</body>
+</html>

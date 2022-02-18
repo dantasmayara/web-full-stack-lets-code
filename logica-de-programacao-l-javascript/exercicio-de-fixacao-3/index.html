@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Exercício de Fixação 3</title>
+</head>
+<body>
+    <script>
+        /*1 - Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
+        -> A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+        -> A mensagem "Reprovado", se a média for menor do que sete;
+        -> A mensagem "Aprovado com Distinção", se a média for igual a dez.*/
+
+        let nota1 = parseFloat(prompt("Digite sua 1ª nota parcial:"));
+        let nota2 = parseFloat(prompt("Digite sua 2ª nota parcial:"));
+        let aprovacao = ((nota1+nota2)/2);
+        
+        if (aprovacao == 10) {
+            alert("Aprovado(a) com Distinção");
+        } else if (aprovacao >= 7) {
+            alert("Aprovado(a)");
+        } else {
+            alert("Reprovado(a)");
+        } 
+        
+        /*2 - As Organizações Tabajara resolveram dar um aumento de salário aos seus colaboradores e lhe contraram para desenvolver o programa que calculará os reajustes.
+        Faça um programa que recebe o salário de um colaborador e o reajuste segundo o seguinte critério, baseado no salário atual:
+        - salários até R$ 280,00 (incluindo) : aumento de 20%
+        - salários entre R$ 280,00 e R$ 700,00 : aumento de 15%
+        - salários entre R$ 700,00 e R$ 1500,00 : aumento de 10%
+        - salários de R$ 1500,00 em diante : aumento de 5%*
+        Após o aumento ser realizado, informe na tela:
+        - o salário antes do reajuste;
+        - o percentual de aumento aplicado;
+        - o valor do aumento;
+        - o novo salário, após o aumento.*/
+
+        let salario_inicial = parseFloat(prompt("Digite seu salário atual em reais:"));
+        let percentual = porcentagem(salario_inicial);
+        let aumento = salario_inicial * (percentual/100);
+        let salario_final = salario_inicial + aumento; 
+
+        function porcentagem(salario_inicial) {   
+            if (salario_inicial <= 280) {
+                return 20;
+            } else if (salario_inicial <= 700) {
+                return 15;
+            } else if (salario_inicial <= 1500) {
+                return 10;
+            } else {
+                return 5;
+            }
+        }
+
+        console.log("Salário antes do reajuste: R$ " + salario_inicial);
+        console.log("Percentual de aumento salarial: " + percentual);
+        console.log("Valor do aumento salarial: R$ " + aumento.toFixed(2));
+        console.log("Salário atual reajustado: R$ " + salario_final);
+        
+        /*3 - Faça um programa para o cálculo de uma folha de pagamento, sabendo que os descontos são do Imposto de Renda, que depende do salário bruto (conforme tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do Salário Bruto, mas não é descontado (é a empresa que deposita). O Salário Líquido corresponde ao Salário Bruto menos os descontos. O programa deverá pedir ao usuário o valor da sua hora e a quantidade de horas trabalhadas no mês.
+        Desconto do IR:
+        - Salário Bruto até 900 (inclusive) - isento;
+        - Salário Bruto até 1500 (inclusive) - desconto de 5%;
+        - Salário Bruto até 2500 (inclusive) - desconto de 10%;
+        - Salário Bruto acima de 2500 - desconto de 20% Imprima na tela as informações, dispostas conforme o exemplo abaixo. No exemplo o valor da hora é 5 e a quantidade de hora é 220.
+        Exemplo:
+        Salário Bruto: (5 * 220)        : R$ 1100,00
+        (-) IR (5%)                     : R$   55,00  
+        (-) INSS ( 10%)                 : R$  110,00
+        FGTS (11%)                      : R$  121,00
+        Total de descontos              : R$  165,00
+        Salário Liquido                 : R$  935,00*/
+
+        let valor_hora = parseFloat(prompt("Informe o valor em reais da hora trabalhada:"));
+        let hora_mes = parseInt(prompt("Informe quantas horas você trabalhou esse mês:"));
+        let bruto_mensal = (valor_hora * hora_mes);
+        let ir_perc = (calcula_ir(bruto_mensal));
+        let ir_desc = ((ir_perc/100) * bruto_mensal);
+        let inss_desc = ((10/100) * bruto_mensal);
+        let fgts_desc = ((11/100) * bruto_mensal); 
+
+        function calcula_ir(bruto_mensal) {   
+            if (bruto_mensal <= 900) {
+                return 0;
+            } else if (bruto_mensal <= 1500) {
+                return 5;
+            } else if (bruto_mensal <= 2500) {
+                return 10;
+            } else {
+                return 20;
+            }
+        }
+
+        console.log("Salário bruto: ("+ valor_hora + " * " + hora_mes + "): R$ " + bruto_mensal);
+        console.log("(-) IR ("+ ir_perc + "%)" + ": R$ " + ir_desc);
+        console.log("(-) INSS ("+ calcula_ir(bruto_mensal) + "%): R$ " + bruto_mensal);
+        console.log("FGTS (11%): R$ " + fgts_desc);
+        console.log("Total de descontos: R$ " + (ir_desc+inss_desc));
+        console.log("Salário líquido: R$ " + (bruto_mensal-inss_desc-ir_desc));
+    </script>
+</body>
+</html>
