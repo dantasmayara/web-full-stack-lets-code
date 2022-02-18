@@ -18,12 +18,14 @@
         let aprovacao = ((nota1+nota2)/2);
         
         if (aprovacao == 10) {
-            alert("Aprovado(a) com Distinção");
-        } else if (aprovacao >= 7) {
-            alert("Aprovado(a)");
+            alert("Aprovado(a) com Distinção! Média: " + aprovacao);
+        } else if (aprovacao < 10 && aprovacao >= 7) {
+            alert("Aprovado(a)! Média: " + aprovacao);
+        } else if (aprovacao < 7 && aprovacao >= 0) {
+            alert("Reprovado(a)! Média: " + aprovacao);
         } else {
-            alert("Reprovado(a)");
-        } 
+            alert("Dados inválidos")
+        }
         
         /*2 - As Organizações Tabajara resolveram dar um aumento de salário aos seus colaboradores e lhe contraram para desenvolver o programa que calculará os reajustes.
         Faça um programa que recebe o salário de um colaborador e o reajuste segundo o seguinte critério, baseado no salário atual:
@@ -36,6 +38,8 @@
         - o percentual de aumento aplicado;
         - o valor do aumento;
         - o novo salário, após o aumento.*/
+        console.log("- Exercício 2");
+        console.log(" ");
 
         let salario_inicial = parseFloat(prompt("Digite seu salário atual em reais:"));
         let percentual = porcentagem(salario_inicial);
@@ -54,11 +58,12 @@
             }
         }
 
-        console.log("Salário antes do reajuste: R$ " + salario_inicial);
-        console.log("Percentual de aumento salarial: " + percentual);
+        console.log("Salário antes do reajuste: R$ " + salario_inicial.toFixed(2));
+        console.log("Aumento salarial de " + percentual + "%");
         console.log("Valor do aumento salarial: R$ " + aumento.toFixed(2));
-        console.log("Salário atual reajustado: R$ " + salario_final);
-        
+        console.log("Salário atual reajustado: R$ " + salario_final.toFixed(2));
+        console.log(" ");
+                
         /*3 - Faça um programa para o cálculo de uma folha de pagamento, sabendo que os descontos são do Imposto de Renda, que depende do salário bruto (conforme tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do Salário Bruto, mas não é descontado (é a empresa que deposita). O Salário Líquido corresponde ao Salário Bruto menos os descontos. O programa deverá pedir ao usuário o valor da sua hora e a quantidade de horas trabalhadas no mês.
         Desconto do IR:
         - Salário Bruto até 900 (inclusive) - isento;
@@ -72,7 +77,9 @@
         FGTS (11%)                      : R$  121,00
         Total de descontos              : R$  165,00
         Salário Liquido                 : R$  935,00*/
-
+        console.log("- Exercício 3");
+        console.log(" ");
+        
         let valor_hora = parseFloat(prompt("Informe o valor em reais da hora trabalhada:"));
         let hora_mes = parseInt(prompt("Informe quantas horas você trabalhou esse mês:"));
         let bruto_mensal = (valor_hora * hora_mes);
@@ -93,12 +100,14 @@
             }
         }
 
-        console.log("Salário bruto: ("+ valor_hora + " * " + hora_mes + "): R$ " + bruto_mensal);
-        console.log("(-) IR ("+ ir_perc + "%)" + ": R$ " + ir_desc);
-        console.log("(-) INSS ("+ calcula_ir(bruto_mensal) + "%): R$ " + bruto_mensal);
-        console.log("FGTS (11%): R$ " + fgts_desc);
-        console.log("Total de descontos: R$ " + (ir_desc+inss_desc));
-        console.log("Salário líquido: R$ " + (bruto_mensal-inss_desc-ir_desc));
+        console.log("Salário bruto: ("+ valor_hora + " * " + hora_mes + "): R$ " + bruto_mensal.toFixed(2));
+        console.log("(-) IR ("+ ir_perc + "%)" + ": R$ " + ir_desc.toFixed(2));
+        console.log("(-) INSS ("+ calcula_ir(bruto_mensal).toFixed(2) + "%): R$ " + bruto_mensal);
+        console.log("FGTS (11%): R$ " + fgts_desc.toFixed(2));
+        console.log("Total de descontos: R$ " + (ir_desc+inss_desc).toFixed(2));
+        console.log("Salário líquido: R$ " + (bruto_mensal-inss_desc-ir_desc).toFixed(2));
+        console.log(" ");
+        
     </script>
 </body>
 </html>
