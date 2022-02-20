@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Atividade de Fixação 04 - Estruturas de Repetição</title>
     <sript type="text/javascript" src="script.js"></sript>
 </head>
+
 <body>
     <script>
         /*1 - Faça um programa que imprima na tela apenas os números ímpares entre 1 e 50;*/
@@ -19,7 +21,7 @@
             }
         }
 
-        alert (lista);
+        alert(lista);
 
         /*2 - Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10. O usuário deve informar
         de qual numero ele deseja ver a tabuada. A saída deve ser conforme o exemplo abaixo:
@@ -33,35 +35,37 @@
         let tabuada = "";
 
         if ((num < 1 || num > 10) || !num) {
-            alert ("Dados inválidos!");           
+            alert("Dados inválidos!");
         } else {
             for (let i = 1; i <= 10; i++) {
                 tabuada += `${i} x ${num} = ${i*num}\n`;
             }
-            alert (`Tabuada do ${num}:\n ${tabuada}`);
+            alert(`Tabuada do ${num}:\n ${tabuada}`);
         }
 
-        
-    
-        /*3 - Percorra uma lista de números (estática ou preenchida pelo usuário) e mostre o menor e o maior números dessa lista.*/
 
-        let quantidade = parseFloat(prompt("Quantos números você deseja digitar?"));
 
-            for (let i = 0; i < quantidade; i++) {
-                let numero = parseInt(prompt("Digite um número por vez e dê enter:"));
+        /*3 - Percorra uma lista de números (estática ou preenchida pelo usuário) e mostre o 
+        menor e o maior números dessa lista.*/
 
-                if (numero > maior) {
-                    return maior;
-                }
-
-                if (numero < menor) {
-                    return menor;
-                }
+        let geraLista = () => {
+            lista = []
+            lenLista = Math.floor(Math.random() * (7 - 5)) + 5;
+            for (i = 0; i <= lenLista; i++) {
+                lista.push(Math.floor(Math.random() * (99 - -99)) + -99)
             }
+            return lista
+        }
 
-        console.log("O menor número digitado foi: " + menor);
-        console.log("O maior número digitado foi: " + maior);
+        let lista_aleat = geraLista()
+        let maior = lista_aleat[0];
+        let menor = lista_aleat[0];
+
         
+
+
+
     </script>
 </body>
+
 </html>
