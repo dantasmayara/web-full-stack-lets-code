@@ -19,6 +19,18 @@
         - As palavras possíveis da forca devem vir de alguma API externa ou um arquivo TXT/JSON contendo a lista de palavras (se 
         sentirem dúvida, podem me procurar; vou ensinar o TXT/JSON em sala).*/
 
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Forca</title>
+  </head>
+  <body>
+    <script>
+      // Nomes e suas respectivas categorias
+
       const arrayPalavras = [
         { nome: "futebol", categoria: "esporte" },
         { nome: "basquete", categoria: "esporte" },
@@ -37,16 +49,19 @@
         { nome: "macarronada", categoria: "comida" },
       ];
 
-      function mostraCategoria(arrayPalavras) {
-        let posicao = parseInt(Math.random() * arrayPalavras.length);
-        palavraAleatoria = arrayPalavras[posicao].nome;
-        let categoriaAleatoria = arrayPalavras[posicao].categoria;
-        console.log(palavraAleatoria);
+      // Escolher uma palavra e uma categoria de forma aleatória
 
-        return "A categoria é: " + categoriaAleatoria;
+      function sortearPalavra(arrayPalavras) {
+        let posicao = parseInt(Math.random() * arrayPalavras.length); 
+        let palavraAleatoriaObj = arrayPalavras[posicao];
+        return palavraAleatoriaObj;
       }
 
-     function traçosNaTela(tracinhos, palavraAleatoria) {
+      function mostraCategoria(categoriaRevelada){
+        return "A categoria é: " + categoriaRevelada;
+      }
+
+      function traçosNaTela(tracinhos, palavraAleatoria) {
         for (let i = 0; i < palavraAleatoria.length; i++) {
           tracinhos.push("_");
         }
@@ -96,24 +111,32 @@
           return false;
       }
 
-      let palavraAleatoria;
+      //Execução
+      let jogarNovamente = true;
+
+      while(jogarNovamente === true) {
+
+      let palavraAleatoriaObj = sortearPalavra(arrayPalavras);
+    
+      let palavraAleatoria = palavraAleatoriaObj.nome;
 
       let tracinhos = [];
 
-      console.log("Jogo da Forca!");
-      console.log(" ");
-
-      let categoriaRevelada = mostraCategoria(arrayPalavras);
+      let categoriaRevelada = mostraCategoria(palavraAleatoriaObj.categoria);
 
       let palavraRevelada = traçosNaTela(tracinhos, palavraAleatoria);
 
       let letra = "";
 
-      let tentativas = 6; 
+      let tentativas = 6;
 
       while (venceu(tracinhos) === false) {
+        
         letra = prompt(categoriaRevelada + "\n\n" + palavraRevelada + "\n\n" + "tentativas: " + tentativas + "\n\n" + "Digite uma letra: ");
-
+        while(isNaN(letra) === false ) {
+           alert("Digite uma letra e não um número!") 
+           letra = prompt(categoriaRevelada + "\n\n" + palavraRevelada + "\n\n" + "tentativas: " + tentativas + "\n\n" + "Digite uma letra: ");
+        }
         palavraRevelada = revelarLetra(letra, tracinhos, palavraAleatoria);
         tentativas = verificarLetra(letra, palavraAleatoria, tentativas);
         if(perdeu(tentativas) === true) {
@@ -124,6 +147,21 @@
       if(venceu(tracinhos) === true) {
       alert("Parabéns você acertou a palavra!");
       }
+
+      let pergunta = prompt("Gostaria de jogar novamente? Digite sim ou não:");
+      while(pergunta !== "sim" && pergunta !== "não") {
+        alert("Digite apenas sim ou não!")
+        pergunta = prompt("Gostaria de jogar novamente? Digite sim ou não!");
+      }
+
+      if(pergunta === "sim") {
+          jogarNovamente = true;
+      } else {
+          jogarNovamente = false;
+      }
+
+      }
+
     </script>
   </body>
 </html>
