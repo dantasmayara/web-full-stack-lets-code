@@ -67,10 +67,33 @@
 
         for (let i = 0; i < tracinhos.length; i++) {
           if (tracinhos[i] === "_") {
-            quantidadeTracinhos += 1;
+            quantidadeTracinhos = quantidadeTracinhos + 1;
           }
         }
         return quantidadeTracinhos === 0;
+      }
+
+      function verificarLetra(letra, palavraAleatoria, tentativas) {
+
+          let qtdLetrasIguais = 0;
+
+        for (let i = 0; i < palavraAleatoria.length; i++) {
+          if (letra === palavraAleatoria[i]) {
+            qtdLetrasIguais = qtdLetrasIguais + 1;
+          }
+        }
+        if(qtdLetrasIguais === 0) {
+            tentativas = tentativas - 1;
+        }
+
+        return tentativas;
+      }
+
+      function perdeu(tentativas) {
+          if(tentativas === 0){
+              return true;
+          }
+          return false;
       }
 
       let palavraAleatoria;
@@ -78,28 +101,29 @@
       let tracinhos = [];
 
       console.log("Jogo da Forca!");
-      console.log(" "); //pular uma linha
+      console.log(" ");
 
       let categoriaRevelada = mostraCategoria(arrayPalavras);
 
       let palavraRevelada = traçosNaTela(tracinhos, palavraAleatoria);
 
-      let letra = null;
+      let letra = "";
+
+      let tentativas = 6; 
 
       while (venceu(tracinhos) === false) {
-        letra = prompt(
-          categoriaRevelada +
-            "\n\n" +
-            palavraRevelada +
-            "\n\n" +
-            "Digite uma letra: "
-        );
+        letra = prompt(categoriaRevelada + "\n\n" + palavraRevelada + "\n\n" + "tentativas: " + tentativas + "\n\n" + "Digite uma letra: ");
 
         palavraRevelada = revelarLetra(letra, tracinhos, palavraAleatoria);
+        tentativas = verificarLetra(letra, palavraAleatoria, tentativas);
+        if(perdeu(tentativas) === true) {
+            alert("Que pena, você perdeu! A palavra era: " + palavraAleatoria);
+            break;
+        }
       }
-
-      alert("Parabéns você acertou a palavra " + palavraAleatoria);
-
+      if(venceu(tracinhos) === true) {
+      alert("Parabéns você acertou a palavra!");
+      }
     </script>
   </body>
 </html>
