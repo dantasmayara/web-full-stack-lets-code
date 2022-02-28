@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividade de Fixação 05</title>
+  </head>
+  <body>
+    <script>
+
+        //1 - Faça uma função recursiva que mostre somente os números pares de um array de números (100XP);     
+
+        let arrayNumeros = [20, 35, 42, 33, 37, 73, 50];
+
+        function verificaPares(arrayNumeros, i = 0) {
+            if (i !== arrayNumeros.length - 1) {
+                verificaPares(arrayNumeros, i + 1);
+            }
+            if (arrayNumeros[i] % 2 === 0) {
+                console.log(arrayNumeros[i]);
+            }
+        }
+
+        verificaPares(arrayNumeros);   
+   
+        //2 - Implemente a função de Fibonacci de forma recursiva (100XP);
+
+        const fibonacci = (num, memo) => {
+            memo = memo || {};
+            if (memo[num]) return memo[num];
+            if (num <= 1) return 1;
+            return (memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo));
+        };
+
+        fibonacci;
+        console.log(fibonacci(num, memo));
+
+        /*function checkeven(num) {
+            if (num === 0) {
+                return true;
+            } else if (num === 1) {
+                return false;
+            } else {
+                console.log(num);
+                return num - checkEven(num - 2);
+            }
+        }*/
+
+        //3 - Crie um array de objetos (pelo menos 5 itens) e implemente map, filter e reduce que façam sentido para o contexto escolhido (300XP).
+    </script>
+  </body>
+</html>
