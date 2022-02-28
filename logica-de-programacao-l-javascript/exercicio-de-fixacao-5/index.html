@@ -25,7 +25,7 @@
         verificaPares(arrayNumeros);   
    
         //2 - Implemente a função de Fibonacci de forma recursiva (100XP);
-
+/*
         const fibonacci = (num, memo) => {
             memo = memo || {};
             if (memo[num]) return memo[num];
@@ -48,6 +48,24 @@
         }*/
 
         //3 - Crie um array de objetos (pelo menos 5 itens) e implemente map, filter e reduce que façam sentido para o contexto escolhido (300XP).
+
+        const pessoas = [
+            {nome: "Mayara", idade: 28, signo: "virgem"},
+            {nome: "Sue", idade: 25, signo: "leao"},
+            {nome: "Jaque", idade: 28, signo: "gemeos"},
+            {nome: "Luis", idade: 25, signo: "libra"},
+            {nome: "Carlos", idade: 27, signo: "peixes"}
+        ];
+
+        function mostraIdade(pessoas) {
+            return pessoas.map((valor) => {
+                return valor.idade;
+            })
+        }
+
+        console.log(mostraIdade(pessoas));
+        
+    
     </script>
   </body>
 </html>
