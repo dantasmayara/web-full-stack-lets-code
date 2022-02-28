@@ -25,53 +25,43 @@
         verificaPares(arrayNumeros);   
    
         //2 - Implemente a função de Fibonacci de forma recursiva (100XP);
-/*
-        const fibonacci = (num, memo) => {
-            memo = memo || {};
-            if (memo[num]) return memo[num];
-            if (num <= 1) return 1;
-            return (memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo));
-        };
 
-        fibonacci;
-        console.log(fibonacci(num, memo));
+        function fibonacci(numero) {
+            if(numero <=1) return 1;
+            return fibonacci(numero -1) + fibonacci(numero -2);
+        }
 
-        /*function checkeven(num) {
-            if (num === 0) {
-                return true;
-            } else if (num === 1) {
-                return false;
-            } else {
-                console.log(num);
-                return num - checkEven(num - 2);
-            }
-        }*/
+        console.log(fibonacci(5));
 
         //3 - Crie um array de objetos (pelo menos 5 itens) e implemente map, filter e reduce que façam sentido para o contexto escolhido (300XP).
 
-        const pessoas = [
-            {nome: "Maria", idade: 28, signo: "virgem"},
-            {nome: "Mariana", idade: 7, signo: "leao"},
-            {nome: "Mariangela", idade: 28, signo: "gemeos"},
-            {nome: "Mariele", idade: 41, signo: "libra"},
-            {nome: "Maira", idade: 32, signo: "peixes"}
+        const atletas = [
+            {nome: "Maria", idade: 28, medalhas: 10},
+            {nome: "Gustavo", idade: 19, medalhas: 3},
+            {nome: "Renata", idade: 23, medalhas: 6},
+            {nome: "Pedro", idade: 41, medalhas: 23},
+            {nome: "Bianca", idade: 32, medalhas: 17}
         ];
 
-        function mostraIdade(pessoas) {
-            return pessoas.map((valor) => {
+        function mostraIdade(atletas) {
+            return atletas.map((valor) => {
                 return valor.idade;
             })
         }
 
-        console.log(mostraIdade(pessoas));
+        console.log(mostraIdade(atletas));
 
-        let filtraIdade = pessoas.filter(MostraMais30);
+        let filtraIdade = atletas.filter(MostraMais30);
 
-        function MostraMais30(pessoas) {
-            return pessoas.idade > 30;
+        function MostraMais30(atletas) {
+            return atletas.idade > 30;
         }
 
         console.log(filtraIdade);
+
+        const somaMedalhas = atletas.reduce ((somatoria, item) => somatoria + item.medalhas, 0);
+
+        console.log(somaMedalhas);
     </script>
   </body>
 </html>
