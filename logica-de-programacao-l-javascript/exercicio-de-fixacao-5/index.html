@@ -50,11 +50,11 @@
         //3 - Crie um array de objetos (pelo menos 5 itens) e implemente map, filter e reduce que façam sentido para o contexto escolhido (300XP).
 
         const pessoas = [
-            {nome: "Mayara", idade: 28, signo: "virgem"},
-            {nome: "Sue", idade: 25, signo: "leao"},
-            {nome: "Jaque", idade: 28, signo: "gemeos"},
-            {nome: "Luis", idade: 25, signo: "libra"},
-            {nome: "Carlos", idade: 27, signo: "peixes"}
+            {nome: "Maria", idade: 28, signo: "virgem"},
+            {nome: "Mariana", idade: 7, signo: "leao"},
+            {nome: "Mariangela", idade: 28, signo: "gemeos"},
+            {nome: "Mariele", idade: 41, signo: "libra"},
+            {nome: "Maira", idade: 32, signo: "peixes"}
         ];
 
         function mostraIdade(pessoas) {
@@ -64,8 +64,14 @@
         }
 
         console.log(mostraIdade(pessoas));
-        
-    
+
+        let filtraIdade = pessoas.filter(MostraMais30);
+
+        function MostraMais30(pessoas) {
+            return pessoas.idade > 30;
+        }
+
+        console.log(filtraIdade);
     </script>
   </body>
 </html>
