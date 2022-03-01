@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da forca</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <p>Placar</p>
+    <div>
+        <p>Vitoria</p>
+        <p id="vitoria"></p>
+        <p>Derrota</p>
+        <p id="derrota"></p>
+    </div>
+    <div class="container">
+        <h1 id="titulo"> Jogo da forca</h1>
+        <div id="imagem"></div>
+
+        <div id="todasCategorias"></div>
+        <div id="categoria">
+            <p id="lblCategoria"></p>
+        </div>
+        <div id="palavraSecreta">
+            <div class="letras"></div>
+            <div class="letras"></div>
+            <div class="letras"></div>
+            <div class="letras"></div>
+        </div>
+    </div>
+
+    <div class="teclado" id="divTeclado">
+        <div class="teclas">
+            <button id="teclaA" onclick="verificaLetra('A')">A</button>
+            <button id="teclaB" onclick="verificaLetra('B')">B</button>
+            <button id="teclaC" onclick="verificaLetra('C')">C</button>
+            <button id="teclaD" onclick="verificaLetra('D')">D</button>
+            <button id="teclaE" onclick="verificaLetra('E')">E</button>
+            <button id="teclaF" onclick="verificaLetra('F')">F</button>
+            <button id="teclaG" onclick="verificaLetra('G')">G</button>
+            <button id="teclaH" onclick="verificaLetra('H')">H</button>
+            <button id="teclaI" onclick="verificaLetra('I')">I</button>
+
+        </div>
+        <div class="teclas">
+            <button id="teclaJ" onclick="verificaLetra('J')">J</button>
+            <button id="teclaK" onclick="verificaLetra('K')">K</button>
+            <button id="teclaL" onclick="verificaLetra('L')">L</button>
+            <button id="teclaM" onclick="verificaLetra('M')">M</button>
+            <button id="teclaN" onclick="verificaLetra('N')">N</button>
+            <button id="teclaO" onclick="verificaLetra('O')">O</button>
+            <button id="teclaP" onclick="verificaLetra('P')">P</button>
+            <button id="teclaQ" onclick="verificaLetra('Q')">Q</button>
+            <button id="teclaR" onclick="verificaLetra('R')">R</button>
+        </div>
+        <div class="teclas">
+            <button id="teclaS" onclick="verificaLetra('S')">S</button>
+            <button id="teclaT" onclick="verificaLetra('T')">T</button>
+            <button id="teclaU" onclick="verificaLetra('U')">U</button>
+            <button id="teclaV" onclick="verificaLetra('V')">V</button>
+            <button id="teclaW" onclick="verificaLetra('W')">W</button>
+            <button id="teclaX" onclick="verificaLetra('X')">X</button>
+            <button id="teclaY" onclick="verificaLetra('Y')">Y</button>
+            <button id="teclaZ" onclick="verificaLetra('Z')">Z</button>
+
+        </div>
+        <button id="btnAcao" onclick="acaoJogo()">Iniciar Jogo</button>
+    </div>
+
+    <script>
+         let palavrasJson = "";
+        let letrasDigitadas = new Array();
+        let erro = 0;
+        let acerto = 0;
+        let numeroChances = 6;
+        let palavra = "";
+        let tam = "";
+        let vazio = '';
+        let jogoIniciado = false;
+        let placarVitoria = 0;
+        let placarDerrota = 0;
+
+        fetch('palavras.json')
+            .then(response => response.json())
+            .then(data => {
+                palavrasJson = data;
+                carregaCategorias(palavrasJson)
+            })
+
+        function carregaCategorias(jsonPalavras) {
+            objTodasCategorias = document.getElementById("todasCategorias")
+            Object.keys(palavrasJson).forEach(cat => {
+                objTodasCategorias.innerHTML += `<input type="checkbox" id="${cat}" name="${cat}">`
+                objTodasCategorias.innerHTML += `<label for="${cat}">${cat}</label><br>`
+            });
+        }
+
+        function acaoJogo() {
+            if (jogoIniciado == true) {
+                //o usuario esta desistindo do jogo
+                fimJogo(false);
+            }
+            else {
+                //esta sendo iniciado um novo jogo
+                categoriasSelecionadas = verificaCategoriaSelecionada();
+
+                if (categoriasSelecionadas.length == 0) {
+                    alert("Pelo menos uma categoria deve ser selecionada!")
+                    return
+                }
+
+                [categoria, palavra] = sorteiaPalavra(categoriasSelecionadas);
+                document.getElementById("lblCategoria").innerHTML = categoria
+                document.getElementById("btnAcao").innerHTML = "Desistir Jogo"
+                jogoIniciado = true
+            }
+        }
+
+        function verificaCategoriaSelecionada() {
+            let categoriasSelecionadas = [];
+            Object.keys(palavrasJson).forEach(cat => {
+                if (document.getElementById(cat).checked == true)
+                //mando o indice da categoria selecionada para o meu objeto
+                    categoriasSelecionadas.push(Object.keys(palavrasJson).indexOf(cat));
+            });
+
+            return categoriasSelecionadas
+        }
+
+        function sorteiaPalavra(categoriasSelecionadas) {
+            indiceCategoria = Math.floor(Math.random() * categoriasSelecionadas.length);
+            categoria = Object.keys(palavrasJson)[categoriasSelecionadas[indiceCategoria]];
+
+            indicePalavra = Math.floor(Math.random() * Object.keys(palavrasJson[categoria]).length);
+            palavraSorteada = palavrasJson[categoria][indicePalavra];
+            palavraSorteada = palavraSorteada.toUpperCase();
+
+            return [categoria, palavraSorteada];
+        }
+
+        function verificaLetra(letra) {
+            //se o jogo não for iniciado ele não consegue digitar letras
+            if (jogoIniciado == false)
+                return;
+
+            let quantidadeAcertos = palavra.split(letra).length - 1;
+            let tam = palavra.length;
+
+            desabilitaBotao(letra)
+
+            letrasDigitadas.push(letra)
+
+            if (quantidadeAcertos >= 1) {
+                acerto = acerto + quantidadeAcertos
+                alert(`A letra ${letra} foi encontrada  ${quantidadeAcertos} vez(es)`);
+            } else {
+                erro++;
+                alert(`A letra  ${letra} não foi encontrada na palavra`);
+
+            }
+
+            atualizaImagemForca(erro)
+
+            if (erro == numeroChances) {
+                alert(`Você perdeu o jogo, a palvra era: ${palavra}`);
+                fimJogo(false);
+            }
+
+            if (acerto == tam) {
+                alert(`Parabéns!! Você ganhou o jogo, acertou a palavra: ${palavra}`);
+                //significa que ganhou o jogo
+                fimJogo(true);
+            }
+
+        }
+
+        function fimJogo(vitoria) {
+
+            if (vitoria)
+                placarVitoria++
+            else
+                placarDerrota++
+
+            document.getElementById("vitoria").innerHTML = placarVitoria;
+            document.getElementById("derrota").innerHTML = placarDerrota;
+
+            //preparação para próxima rodada do jogo
+            letrasDigitadas.forEach(letra => {
+                habilitaBotao(letra)
+            });
+
+            
+            document.getElementById("lblCategoria").innerHTML = "";
+            Object.keys(palavrasJson).forEach(cat => { document.getElementById(cat).checked = false });
+
+            jogoIniciado = false;
+            palavra = "";
+            categoria = "";
+
+            document.getElementById("btnAcao").innerHTML = "Iniciar Jogo"
+        }
+
+        function habilitaBotao(letra) {
+            document.getElementById(`tecla${letra}`).disabled = false
+            document.getElementById(`tecla${letra}`).style.background = "blue"
+            document.getElementById(`tecla${letra}`).style.color = "fuchsia";
+        }
+
+        function desabilitaBotao(letra) {
+            document.getElementById(`tecla${letra}`).disabled = true
+            document.getElementById(`tecla${letra}`).style.background = "#C71585";
+            document.getElementById(`tecla${letra}`).style.color = "#ffffff";
+        }
+
+        function atualizaImagemForca(qtErro) {
+            objImagem = document.getElementById("imagem")
+            switch (qtErro) {
+                case 1:
+                    objImagem.style.background = "url('./image/forca01.png')";
+                    break;
+                case 2:
+                    objImagem.style.background = "url('./image/forca02.png')";
+                    break;
+                case 3:
+                    objImagem.style.background = "url('./image/forca03.png')";
+                    break;
+                case 4:
+                    objImagem.style.background = "url('./image/forca04.png')";
+                    break;
+                case 5:
+                    objImagem.style.background = "url('./image/forca05.png')";
+                    break;
+                case 6:
+                    objImagem.style.background = "url('./image/forca06.png')";
+                    break;
+                default:
+                    objImagem.style.background = "url('./image/forca.png')";
+                    break;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
