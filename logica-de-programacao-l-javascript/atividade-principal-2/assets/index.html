@@ -84,7 +84,7 @@
         let placarVitoria = 0;
         let placarDerrota = 0;
 
-        fetch('palavras.json')
+        fetch('./json/palavras.json')
             .then(response => response.json())
             .then(data => {
                 palavrasJson = data;
