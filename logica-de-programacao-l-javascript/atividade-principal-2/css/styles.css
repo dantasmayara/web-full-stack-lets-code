@@ -30,7 +30,6 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
-
 }
 
 .div2 {
@@ -80,7 +79,7 @@ body{
 
 .teclado{
     margin-top: 30px;
-    min: width 68vw;
+    min-width: 474px;
     display: flex;
     align-items: center;
     flex-direction: column;
