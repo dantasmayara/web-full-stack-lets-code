@@ -6,18 +6,18 @@
 }
 
 body {
-    max-width: 100%;
+    width: 100vw;
     height: 90vw;
     margin: 0 auto;
     background-color: beige;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    margin: 2vw;
 }
 
 .div1 {
-    width: 75%;
+    width: 75vw;
     background-color: beige;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@ body {
 }
 
 .div2 {
-    width: 25%;
+    width: 25vw;
     background-color: beige;
     display: flex;
     flex-direction: column;
