@@ -49,11 +49,8 @@ body{
 
 #titulo, #tituloPlacar, #tituloCat
 {
-    padding: 25px;
-    
+    padding: 25px; 
 }
-
-
 
 #imagem{
     background-image: url('../assets/images/forca.png');
@@ -65,13 +62,11 @@ body{
 }
 
  
-#letras {
-   
+#letras { 
     text-align: center;
     color: black;
     letter-spacing: 5px;
     font-size: 40px;
-   
 } 
 
 .teclado{
