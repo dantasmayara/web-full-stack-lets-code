@@ -9,64 +9,79 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
-<body>
-    <p>Placar</p>
-    <div>
-        <p>Vitoria</p>
-        <p id="vitoria"></p>
-        <p>Derrota</p>
-        <p id="derrota"></p>
-    </div>
-    <div class="container">
-        <h1 id="titulo"> Jogo da forca</h1>
-        <div id="imagem"></div>
+<header>
+    <div class="h1" id="titulos"><h1>JOGO DA FORCA</h1></div>    
+</header>
 
-        <div id="todasCategorias"></div>
-        <div id="categoria">
-            <p id="lblCategoria"></p>
+<body>
+ 
+    <div class="container">
+        <div class="container">
+            <div class="container">
+                <div class="forca">
+                    <div id="imagem">
+                </div>
+    
+                <div class="container1b">
+                    <div id="palavraSecreta">
+                        <div class="letras"></div>
+                        <div class="letras"></div>
+                        <div class="letras"></div>
+                        <div class="letras"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="palavraSecreta">
-            <div class="letras"></div>
-            <div class="letras"></div>
-            <div class="letras"></div>
-            <div class="letras"></div>
+
+        <div class="categorias">
+            <h2 id="titulo">Categorias</h2><br>
+            <div id="todasCategorias"></div>
+            <div id="categoria">
+                <p id="lblCategoria"></p>
+            </div>
+        </div>
+
+        <div class="placar">
+            <h2 id="titulo">Placar</h2><br>
+            <p>Vitória</p>
+            <p id="vitoria"></p>
+            <p>Derrota</p>
+            <p id="derrota"></p>
         </div>
     </div>
 
     <div class="teclado" id="divTeclado">
         <div class="teclas">
-            <button id="teclaA" onclick="verificaLetra('A')">A</button>
-            <button id="teclaB" onclick="verificaLetra('B')">B</button>
-            <button id="teclaC" onclick="verificaLetra('C')">C</button>
-            <button id="teclaD" onclick="verificaLetra('D')">D</button>
-            <button id="teclaE" onclick="verificaLetra('E')">E</button>
-            <button id="teclaF" onclick="verificaLetra('F')">F</button>
-            <button id="teclaG" onclick="verificaLetra('G')">G</button>
-            <button id="teclaH" onclick="verificaLetra('H')">H</button>
-            <button id="teclaI" onclick="verificaLetra('I')">I</button>
-
+            <button id="teclaA" onclick="verificaLetra('Q')">Q</button>
+            <button id="teclaB" onclick="verificaLetra('W')">W</button>
+            <button id="teclaC" onclick="verificaLetra('E')">E</button>
+            <button id="teclaD" onclick="verificaLetra('R')">R</button>
+            <button id="teclaE" onclick="verificaLetra('T')">T</button>
+            <button id="teclaF" onclick="verificaLetra('Y')">Y</button>
+            <button id="teclaG" onclick="verificaLetra('U')">U</button>
+            <button id="teclaH" onclick="verificaLetra('I')">I</button>
+            <button id="teclaI" onclick="verificaLetra('O')">O</button>
+            <button id="teclaI" onclick="verificaLetra('P')">P</button>
         </div>
         <div class="teclas">
-            <button id="teclaJ" onclick="verificaLetra('J')">J</button>
-            <button id="teclaK" onclick="verificaLetra('K')">K</button>
-            <button id="teclaL" onclick="verificaLetra('L')">L</button>
-            <button id="teclaM" onclick="verificaLetra('M')">M</button>
-            <button id="teclaN" onclick="verificaLetra('N')">N</button>
-            <button id="teclaO" onclick="verificaLetra('O')">O</button>
-            <button id="teclaP" onclick="verificaLetra('P')">P</button>
-            <button id="teclaQ" onclick="verificaLetra('Q')">Q</button>
-            <button id="teclaR" onclick="verificaLetra('R')">R</button>
+            <button id="teclaJ" onclick="verificaLetra('A')">A</button>
+            <button id="teclaK" onclick="verificaLetra('S')">S</button>
+            <button id="teclaL" onclick="verificaLetra('D')">D</button>
+            <button id="teclaM" onclick="verificaLetra('F')">F</button>
+            <button id="teclaN" onclick="verificaLetra('G')">G</button>
+            <button id="teclaO" onclick="verificaLetra('H')">H</button>
+            <button id="teclaP" onclick="verificaLetra('J')">J</button>
+            <button id="teclaQ" onclick="verificaLetra('K')">K</button>
+            <button id="teclaR" onclick="verificaLetra('L')">L</button>
         </div>
         <div class="teclas">
-            <button id="teclaS" onclick="verificaLetra('S')">S</button>
-            <button id="teclaT" onclick="verificaLetra('T')">T</button>
-            <button id="teclaU" onclick="verificaLetra('U')">U</button>
+            <button id="teclaS" onclick="verificaLetra('Z')">Z</button>
+            <button id="teclaT" onclick="verificaLetra('X')">X</button>
+            <button id="teclaU" onclick="verificaLetra('C')">C</button>
             <button id="teclaV" onclick="verificaLetra('V')">V</button>
-            <button id="teclaW" onclick="verificaLetra('W')">W</button>
-            <button id="teclaX" onclick="verificaLetra('X')">X</button>
-            <button id="teclaY" onclick="verificaLetra('Y')">Y</button>
-            <button id="teclaZ" onclick="verificaLetra('Z')">Z</button>
-
+            <button id="teclaW" onclick="verificaLetra('B')">B</button>
+            <button id="teclaX" onclick="verificaLetra('N')">N</button>
+            <button id="teclaY" onclick="verificaLetra('M')">M</button>
         </div>
         <button id="btnAcao" onclick="acaoJogo()">Iniciar Jogo</button>
     </div>
