@@ -8,7 +8,7 @@
 body{
     width: 86vw;
     height: 40vw;
-    min-width: 50vw;
+    min-width: 40vw;
     max-width: 60vw;
     min-height: 10vw;
     max-height: 10vw;
@@ -23,10 +23,10 @@ body{
 
 .div1 {
     width: 50vw;
-    min-width: 68vw;
+    min-width: 70vw;
     max-width: 80vw;
     min-height: 10vw;
-    background-color: purple;
+    background-color: beige;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -35,9 +35,9 @@ body{
 
 .div2 {
     width: 10vw;
-    min-width: 16vw;
+    min-width: 18vw;
     max-width: 10vw;
-    background-color: chocolate;
+    background-color: beige;
     display: flex;
     flex-direction: column;
     margin-top: 100px;
@@ -80,7 +80,7 @@ body{
 
 .teclado{
     margin-top: 30px;
-    min-width:500px;
+    min: width 68vw;
     display: flex;
     align-items: center;
     flex-direction: column;
