@@ -8,6 +8,10 @@
 body{
     width: 90vw;
     height: 40vw;
+    min-width: 90vw;
+    max-width: 55vw;
+    min-height: 660px;
+    max-height: 500px;
     margin: 0 auto;
     background-color: beige;
     font-family: 'Ubuntu', sans-serif;
@@ -15,18 +19,24 @@ body{
     flex-direction: row;
     margin: 2vw;
     justify-content: center;
+    flex: 1 1 10px;
 }
 
 .div1 {
     width: 50vw;
+    min-width: 550px;
+    max-width: 700px;
+    min-height: 250px;
     background-color: beige;
     display: flex;
     align-items: center;
     flex-direction: column;
+    flex: 1 1 10px;
 }
 
 .div2 {
     width: 10vw;
+    min-width: 80px;
     background-color: beige;
     display: flex;
     flex-direction: column;
@@ -37,7 +47,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     flex-direction: column;   
 }
 
@@ -71,11 +80,10 @@ body{
 
 .teclado{
     margin-top: 30px;
+    min-width:500px;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    align-items: center;    
 }
 
 .teclas button { 
