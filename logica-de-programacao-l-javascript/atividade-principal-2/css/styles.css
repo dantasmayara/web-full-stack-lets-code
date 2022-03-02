@@ -6,38 +6,38 @@
 }
 
 body{
-    width: 90vw;
+    width: 86vw;
     height: 40vw;
-    min-width: 90vw;
-    max-width: 55vw;
-    min-height: 660px;
-    max-height: 500px;
+    min-width: 50vw;
+    max-width: 60vw;
+    min-height: 10vw;
+    max-height: 10vw;
     margin: 0 auto;
     background-color: beige;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     flex-direction: row;
-    margin: 2vw;
+
     justify-content: center;
-    flex: 1 1 10px;
 }
 
 .div1 {
     width: 50vw;
-    min-width: 550px;
-    max-width: 700px;
-    min-height: 250px;
-    background-color: beige;
+    min-width: 68vw;
+    max-width: 80vw;
+    min-height: 10vw;
+    background-color: purple;
     display: flex;
     align-items: center;
     flex-direction: column;
-    flex: 1 1 10px;
+
 }
 
 .div2 {
     width: 10vw;
-    min-width: 80px;
-    background-color: beige;
+    min-width: 16vw;
+    max-width: 10vw;
+    background-color: chocolate;
     display: flex;
     flex-direction: column;
     margin-top: 100px;
