@@ -6,37 +6,31 @@
 }
 
 body{
-    width: 86vw;
-    height: 40vw;
-    min-width: 40vw;
-    max-width: 60vw;
-    min-height: 10vw;
-    max-height: 10vw;
+    width: 50vw;
+    height: 41vw;
     margin: 0 auto;
     background-color: beige;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     flex-direction: row;
-
     justify-content: center;
 }
 
 .div1 {
-    width: 50vw;
-    min-width: 70vw;
-    max-width: 80vw;
-    min-height: 10vw;
-    background-color: beige;
+    width: 42vw;
+    min-width: 500px;
+    height: 39vw;
+    min-height: 630px;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column;    
 }
 
 .div2 {
-    width: 10vw;
-    min-width: 18vw;
-    max-width: 10vw;
-    background-color: beige;
+    width: 18vw;
+    min-width: 120px;
+    height: 25vw;
+    min-height: 530px;
     display: flex;
     flex-direction: column;
     margin-top: 100px;
@@ -79,7 +73,8 @@ body{
 
 .teclado{
     margin-top: 30px;
-    min-width: 474px;
+    width: 500px;
+    min-width: 480px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -123,3 +118,5 @@ body{
     font-size: 'Ubuntu', sans-serif;
     font-weight: 900;
 }
+
+@media screen and (max-width: 968px) {
