@@ -67,12 +67,13 @@
         </div>
         <br><br><br>
         <div class="categorias">
-            <h2 id="tituloCat"> Categoria</h2>
-            <div id="todasCategorias"></div>
-            <div id="categoria">
-                <p id="lblCategoria"></p>
-            </div>
+            <h2 id="tituloCat">Categoria</h2>
+            <div id="todasCategorias">  
         </div>
+        <div id="categoria"><br><br>
+            <p>A categoria sorteada foi:</p>    
+        </div>
+        <h2 id="lblCategoria"></h2>
     </div>
 
     <script>
@@ -127,7 +128,7 @@
                  atualizaImagemForca(0);
 
                 document.getElementById("lblCategoria").innerHTML = categoria;
-                document.getElementById("btnAcao").innerHTML = "Desistir Jogo";
+                document.getElementById("btnAcao").innerHTML = "DESISTIR";
                 jogoIniciado = true
             }
         }
