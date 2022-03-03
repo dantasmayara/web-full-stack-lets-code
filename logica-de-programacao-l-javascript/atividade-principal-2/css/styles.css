@@ -9,6 +9,7 @@ body{
     width: 50vw;
     height: 41vw;
     margin: 0 auto;
+    margin-top: 30px;
     background-color: beige;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
