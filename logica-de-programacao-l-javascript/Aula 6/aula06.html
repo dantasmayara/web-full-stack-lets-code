@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 06 - Funções de Alta Ordem de Array</title>
+</head>
+<body>
+    <script>
+        let arrayPalavras;
+        fetch('teste.json')
+            .then(response => response.json())
+            .then(data => {
+                arrayPalavras = data;
+                processaJogo(arrayPalavras);
+            });
+
+        function processaJogo(arrayPalavras) {
+            // console.log(arrayPalavras);
+        }
+
+        let palavras = [
+            {
+                "palavra": "Abacate",
+                "tema": "Frutas",
+                "xp": 20
+            },
+            {
+                "palavra": "Banana",
+                "tema": "Frutas",
+                "xp": 10
+            },
+            {
+                "palavra": "Natação",
+                "tema": "Esportes",
+            },
+            {
+                "palavra": "Tênis",
+                "tema": "Esportes",
+                "xp": 20
+            },
+            {
+                "palavra": "Futebol",
+                "tema": "Esportes",
+            },
+            {
+                "palavra": "Basquete",
+                "tema": "Esportes",
+                "xp": 20
+            },
+            {
+                "palavra": "Palmeiras não tem mundial",
+                "tema": "Esportes",
+                "xp": 1000
+            }
+        ];
+        let novoArray = ['_', '_', '_', '_', '_', '_'];
+
+        console.log(novoArray.indexOf('x')); // não acha o 'x' e por isso retorna -1
+        console.log(novoArray);
+        novoArray = novoArray.concat(['x', 'x', 'x']);
+        console.log(novoArray);
+
+        console.log(novoArray.entries());
+
+        for (let [indice, valor] of novoArray.entries()) {
+            console.log(indice, valor);
+        }
+
+        for (let entry of novoArray.entries()) {
+            console.log(entry);
+        }
+
+        for (let key of novoArray.keys()) {
+            console.log(key);
+        }
+
+        for (let value of novoArray.values()) {
+            console.log(value);
+        }
+
+        // Funções de Alta Ordem de Array
+        let arrayNums = [3, 4, 2, 25, 13, 20, 5, 2];
+        console.log(arrayNums.sort((a, b) => b - a)); // decrescente
+        console.log(arrayNums);
+        console.log(arrayNums.sort((a, b) => a - b)); // crescente
+
+        console.log("Find:", palavras.find((obj, index, arrayObjs) => {
+            console.log(obj, index, arrayObjs);
+            return obj.palavra === "Futebol"; // se não encontrar retorna 'undefined'
+        }));
+
+        console.log("FindIndex:",palavras.findIndex((obj, index, arrayObjs) => obj.palavra === "Futebol"));
+
+        const funcaoForEach = (obj, index, arrayObjs) => {
+            console.log(obj, index, arrayObjs);
+        };
+        palavras.forEach(funcaoForEach);
+
+        // Map, Filter e Reduce
+        // const arrayStrPalavras = palavras.map((obj, index, arrayObjs) => {
+        //     return obj.palavra;
+        // });
+
+        const arrayStrPalavras = palavras.map(obj => obj.palavra);
+        console.log(arrayStrPalavras);
+        console.log(palavras);
+
+        const arrayIndex = palavras.map((_, index) => index);
+        console.log(arrayIndex);
+
+        const palavrasTemaEsportes = palavras.filter(obj => obj.tema === "Esportes")
+                                             .map(obj => obj.palavra);
+        console.log(palavrasTemaEsportes);
+
+        // const totalXP = palavras.reduce((valAnt, valAtual, indiceAtual, arrayObjs) => {
+        //     console.log(valAnt, valAtual, indiceAtual, arrayObjs);
+        //     return valAnt + valAtual.xp;
+        // }, 0);
+
+        const totalXP = palavras.reduce((valAnt, valAtual) => valAtual.xp? valAnt + valAtual.xp : valAnt, 0);
+        console.log(totalXP);
+
+        const nums = [10, 20, 30, 40, 50];
+        const soma = nums.reduce((somatoria, item) => somatoria + item);
+        console.log(soma);
+    </script>
+</body>
+</html>
