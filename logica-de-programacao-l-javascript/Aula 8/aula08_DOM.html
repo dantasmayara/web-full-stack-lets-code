@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 08 - Manipulação do DOM</title>
+</head>
+<body>
+    <form>
+        <input id="numero" type="number" value="1" min="1">
+        <!-- <input id="submit" onclick="gera_tabuada(event)" type="submit"> -->
+        <input id="submit" type="submit">
+    </form>
+    <div id="conteudo-tabuada"></div>
+    <script>
+        function gera_tabuada(event) {
+            event.preventDefault();
+            console.clear();
+
+            const element = document.getElementById("numero");
+            const conteudo = document.getElementById("conteudo-tabuada");
+            const numero_tabuada = element.value;
+
+            if (numero_tabuada == "") {
+                conteudo.innerHTML = `<span style="color: red">Valor inválido! Digite um número, disgraça.</span>`
+                return;
+            }
+
+            // console.log(conteudo.textContent);
+            // console.log(conteudo.innerHTML);
+            // console.log(conteudo.innerText);
+            conteudo.innerHTML = "";
+            for (let i=1; i<=10; i++) {
+                conteudo.innerHTML += `${numero_tabuada} X ${i} = ${i*numero_tabuada}<br>`;
+            }
+
+            element.value = "1";
+            element.focus();
+        }
+
+        const input = document.getElementById("submit");
+        // input.onclick = (event) => gera_tabuada(event);
+        input.onclick = gera_tabuada;
+        // document.onkeyup = (event) => {
+        //     if (event.key === "Enter") {
+        //         gera_tabuada(event);
+        //     }
+        // }
+
+        // Abrindo umas aspas aqui para falar de ++
+        let i = 1;
+        console.log(i);
+        console.log(++i);
+        console.log(i);
+    </script>
+</body>
+</html>

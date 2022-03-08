@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 08 - Spread Operator</title>
+</head>
+<body>
+    <script>
+        const array1 = [1, 2, 3, 4, 5];
+
+        console.log(array1);
+        console.log(...array1); // 1, 2, 3, 4, 5
+        console.log(array1);
+
+        const array2 = [6, 7, 8, 9];
+
+        const array3 = [...array1, ...array2];
+        console.log(array3);
+
+        console.log(Math.min(...array1));
+
+        function min(...values) {
+            let minNum = values[0];
+            for (let i=1; i<values.length; i++) {
+                if (values[i] < minNum) {
+                    minNum = values[i];
+                }
+            }
+        }
+
+        min(1, 2, 3, 4, 5, 6);
+
+        const array4 = [0, ...array1, 6, 7];
+        console.log(array4);
+
+        const humano_leticia = {
+            nome: "Letícia Pardini",
+            idade: 26,
+            peso: 60,
+            altura: 1.625,
+            bomHumor: true,
+            nacionalidade: "brasileira",
+            naturalidade: "sul-matogrossense",
+        }
+
+        const nova_leticia = {
+            xp: 900,
+            ...humano_leticia,
+            nome: "Letícia Pardini Figueredo",
+        };
+        console.log(nova_leticia);
+
+        const [primeiro, segundo, terceiro, ...resto] = array1;
+        console.log(primeiro, segundo, terceiro, resto);
+        // primeiro = 5; -> NO PUEDE
+
+        // const [...primeiros, ultimo] = array1; -> NO ERES POSSIBLE, C'EST NE PAS POSSIBLE, NOT POSSIBLE...
+        // console.log(primeiros, ultimo);
+
+        const { xp: xp_lele, nome: nome_lele, ...resto_lele } = nova_leticia;
+        console.log(xp_lele, nome_lele, resto_lele);
+    </script>
+</body>
+</html>

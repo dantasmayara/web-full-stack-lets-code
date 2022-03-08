@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07 - Objetos e This</title>
+</head>
+<body>
+    <script>
+        // console.log(this);
+
+        // Jogo da Forca
+
+        // Pedir para o usuário digitar uma letra (mostrar também quais foram as letras que ele já usou)
+        // Verificar se esta letra já foi usada
+        // Verificar se esta letra NÃO É UMA LETRA
+            // Número
+            // Não digitou nada (undefined)
+            // Palavra (pode ser entendido como o chute da palavra toda)
+                // "Opa, palavra digitada não equivale à palavra sorteada"
+                    // Permitir que o cara digite algo para reiniciar
+                // "Parabéns, você adivinhou a palavra sorteada"
+        // ----> Verficar se esta letra pertence à palavra sorteada <----
+            // Se sim, mostra como a palavra está por enquanto (LETRA PERTENCE À PALAVRA)
+            // Se não, mostra como a palavra está por enquanto e mostra a forca (LETRA NÃO PERTENCE À PALAVRA)
+            // Caso o usuário já tenha descoberto a palavra toda, dê os parabéns!
+            // Caso o usuário tenha perdido todas as partes do corpo na forca, já elvis...
+            // De um jeito ou de outro permitir que o usuário REINICIE O JOGO DO ZERO
+                // Sortear outra palavra
+                // Repete o loop principal
+                // (...) 
+
+        // OBS1.: Existirá um looping externo (referente à partida, ou seja, à nova palavra)
+        // e um looping interno (referente ao jogo principal, no qual vai estar toda a lógica de verificação e casos possíveis)
+        // OBS2.: SEMPRE QUE POSSÍVEL mostrar as letras já usadas e a forca em si
+
+        // Exemplo de código de validação no jogo da forca
+        // let letrasUsadas = ['A', 'E', 'O'];
+        // let letra = prompt("Digite a letra desejada:");
+        // while(letrasUsadas.includes(letra)) {
+        //     letra = prompt("Letra inválida!!! Digite a letra novamente:");
+        // }
+
+        // console.log("Letra válida: ", letra);
+
+        console.log(this);
+        // this.alert("Oi, tudo bem?");
+        console.log(this.innerHeight);
+        console.log(this.document);
+
+        const humano_luis = {
+            nome: "Luís Fernando Teixeira Bicalho",
+            altura: 1.72,
+            peso: 65,
+            idade: 25,
+            deBomHumor: true,
+            nacionalidade: "brasileiro",
+            naturalidade: "carioca",
+            // vontadeDeDarXPParaJoao: function (joaoForBemNosTrabalho = false) {
+            //     console.log(this);
+            //     if (joaoForBemNosTrabalho) {
+            //         console.log("João merece XP máximo!");
+            //     } else {
+            //         console.log("João não merece nem o cotonete Johnson...");
+            //     }
+            // }
+            vontadeDeDarXPParaJoao (joaoForBemNosTrabalho = false) {
+                console.log(this, joaoForBemNosTrabalho);
+                if (joaoForBemNosTrabalho && this.deBomHumor) {
+                    console.log("João merece XP máximo!");
+                } else {
+                    console.log("João não merece nem o cotonete Johnson...");
+                }
+            },
+            // vontadeDeDarXPParaJoao: (joaoForBemNosTrabalho = false) => {
+            //     console.log(this);
+            //     if (joaoForBemNosTrabalho) {
+            //         console.log("João merece XP máximo!");
+            //     } else {
+            //         console.log("João não merece nem o cotonete Johnson...");
+            //     }
+            // }
+        };
+
+        const humano_anna = {
+            nome: "Anna Laura Alves",
+            altura: 1.65,
+            peso: 63,
+            idade: 19,
+            deBomHumor: true,
+            nacionalidade: "brasileiro",
+            naturalidade: "paulista"
+        };
+
+        // humano_anna.vontadeDeDarXPParaJoao = humano_luis.vontadeDeDarXPParaJoao;
+
+        // humano_anna.vontadeDeDarXPParaJoao(true);
+
+        const vontadeDeDarXPParaJoao = humano_luis.vontadeDeDarXPParaJoao.bind(humano_luis, true);
+
+        vontadeDeDarXPParaJoao();
+
+        const somar = function(n1, n2){ return n1 + n2; }
+        const somar1 = somar.bind(null, 1);
+
+        console.log(somar1(2));
+
+        const resultCall = somar1.call(null, 4, 5);
+        console.log(resultCall);
+
+        const params = [4, 5];
+        const resultApply = somar1.apply(null, params);
+        console.log(resultApply);
+    </script>
+</body>
+</html>
