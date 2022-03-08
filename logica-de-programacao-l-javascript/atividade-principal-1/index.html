@@ -1,24 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade Principal 01 - Jogo da Forca</title>
-</head>
-<body>
-    <script>
-        /*PRINCIPAL (700XP)
-        - Fazer um jogo da forca (não precisa mostrar nada no DOM, somente usando alert e prompt é suficiente);
-        - O usuário deve poder dizer se ele quer jogar novamente ou não;
-        - Ter uma conjunto de palavras possíveis, cada uma com um tema associado;
-        - Fazer todas as validações necessárias (prever erros do usuário, como digitar um número ao invés de uma letra, dentre outros);
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Forca</title>
+  </head>
 
-        EXTRA (200XP)
-        - Ter algum respaldo visual da forca no HTML (não precisa ser a forca inteira, só o bonequinho palito já está ótimo);
-        - As palavras possíveis da forca devem vir de alguma API externa ou um arquivo TXT/JSON contendo a lista de palavras (se 
-        sentirem dúvida, podem me procurar; vou ensinar o TXT/JSON em sala).*/
+  <body>
+    <script>
+      /*PRINCIPAL (700XP)
+      - Fazer um jogo da forca (não precisa mostrar nada no DOM, somente usando alert e prompt é suficiente);
+      - O usuário deve poder dizer se ele quer jogar novamente ou não;
+      - Ter uma conjunto de palavras possíveis, cada uma com um tema associado;
+      - Fazer todas as validações necessárias (prever erros do usuário, como digitar um número ao invés de uma letra, dentre outros);
+      EXTRA (200XP)
+      - Ter algum respaldo visual da forca no HTML (não precisa ser a forca inteira, só o bonequinho palito já está ótimo);
+      - As palavras possíveis da forca devem vir de alguma API externa ou um arquivo TXT/JSON contendo a lista de palavras (se 
+      sentirem dúvida, podem me procurar; vou ensinar o TXT/JSON em sala).*/
+
+      const arrayPalavras = [
+        {
+          nome: "futebol",
+          categoria: "esporte",
+        },
+        {
+          nome: "basquete",
+          categoria: "esporte",
+        },
+        {
+          nome: "volei",
+          categoria: "esporte",
+        },
+        {
+          nome: "tenis",
+          categoria: "esporte",
+        },
+        {
+          nome: "golfe",
+          categoria: "esporte",
+        },
+        {
+          nome: "rock",
+          categoria: "música",
+        },
+        {
+          nome: "jazz",
+          categoria: "música",
+        },
+        {
+          nome: "pop",
+          categoria: "música",
+        },
+        {
+          nome: "mpb",
+          categoria: "música",
+        },
+        {
+          nome: "metal",
+          categoria: "música",
+        },
+        {
+          nome: "lasanha",
+          categoria: "comida",
+        },
+        {
+          nome: "pizza",
+          categoria: "comida",
+        },
+        {
+          nome: "nhoque",
+          categoria: "comida",
+        },
+        {
+          nome: "estrogonofe",
+          categoria: "comida",
+        },
+        {
+          nome: "macarronada",
+          categoria: "comida",
+        },
+      ];
+
+      function sortearPalavra(arrayPalavras) {
+        let posicao = parseInt(Math.random() * arrayPalavras.length);
+        let palavraAleatoriaObj = arrayPalavras[posicao];
+        return palavraAleatoriaObj;
+      }
+
+      function mostraCategoria(categoriaRevelada) {
+        return "A categoria é: " + categoriaRevelada;
+      }
+
+      function traçosNaTela(tracinhos, palavraAleatoria) {
+        for (let i = 0; i < palavraAleatoria.length; i++) {
+          tracinhos.push("_");
+        }
+        return tracinhos.join(" ");
+      }
+
+      function revelarLetra(letra, tracinhos, palavraAleatoria) {
+        for (let i = 0; i < palavraAleatoria.length; i++) {
+          if (letra === palavraAleatoria[i]) {
+            tracinhos[i] = letra;
+          }
+        }
+        return tracinhos.join(" ");
+      }
+
+      function venceu(tracinhos) {
+        let quantidadeTracinhos = 0;
+
+        for (let i = 0; i < tracinhos.length; i++) {
+          if (tracinhos[i] === "_") {
+            quantidadeTracinhos = quantidadeTracinhos + 1;
+          }
+        }
+        return quantidadeTracinhos === 0;
+      }
+
+      function verificarLetra(letra, palavraAleatoria, tentativas) {
+        let qtdLetrasIguais = 0;
+
+        for (let i = 0; i < palavraAleatoria.length; i++) {
+          if (letra === palavraAleatoria[i]) {
+            qtdLetrasIguais = qtdLetrasIguais + 1;
+          }
+        }
+        if (qtdLetrasIguais === 0) {
+          tentativas = tentativas - 1;
+        }
+        return tentativas;
+      }
+
+      function perdeu(tentativas) {
+        if (tentativas === 0) {
+          return true;
+        }
+        return false;
+      }
+
+      let jogarNovamente = true;
+
+      while (jogarNovamente === true) {
+        let palavraAleatoriaObj = sortearPalavra(arrayPalavras);
+
+        let palavraAleatoria = palavraAleatoriaObj.nome;
+
+        let tracinhos = [];
+
+        let categoriaRevelada = mostraCategoria(palavraAleatoriaObj.categoria);
+
+        let palavraRevelada = traçosNaTela(tracinhos, palavraAleatoria);
+
+        let letra = "";
+
+        let tentativas = 6;
+
+        while (venceu(tracinhos) === false) {
+          letra = prompt(
+            categoriaRevelada +
+              "\n\n" +
+              palavraRevelada +
+              "\n\n" +
+              "tentativas: " +
+              tentativas +
+              "\n\n" +
+              "Digite uma letra: "
+          );
+          while (isNaN(letra) === false) {
+            alert("Digite uma letra e não um número!");
+            letra = prompt(
+              categoriaRevelada +
+                "\n\n" +
+                palavraRevelada +
+                "\n\n" +
+                "tentativas: " +
+                tentativas +
+                "\n\n" +
+                "Digite uma letra: "
+            );
+          }
+          palavraRevelada = revelarLetra(letra, tracinhos, palavraAleatoria);
+          tentativas = verificarLetra(letra, palavraAleatoria, tentativas);
+          if (perdeu(tentativas) === true) {
+            alert("Que pena, você perdeu! A palavra era: " + palavraAleatoria);
+            break;
+          }
+        }
+        if (venceu(tracinhos) === true) {
+          alert("Parabéns você acertou a palavra!");
+        }
+
+        let pergunta = prompt(
+          "Gostaria de jogar novamente? Digite sim ou não:"
+        );
+        while (pergunta !== "sim" && pergunta !== "não") {
+          alert("Digite apenas sim ou não!");
+          pergunta = prompt("Gostaria de jogar novamente? Digite sim ou não!");
+        }
+
+        if (pergunta === "sim") {
+          jogarNovamente = true;
+        } else {
+          jogarNovamente = false;
+        }
+      }
     </script>
-    
-</body>
+  </body>
 </html>

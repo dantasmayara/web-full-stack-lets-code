@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividade de Fixação 05</title>
+  </head>
+  <body>
+    <script>
+
+        //1 - Faça uma função recursiva que mostre somente os números pares de um array de números (100XP);     
+
+        let arrayNumeros = [20, 35, 42, 33, 37, 73, 50];
+
+        function verificaPares(arrayNumeros, i = 0) {
+            if (i !== arrayNumeros.length - 1) {
+                verificaPares(arrayNumeros, i + 1);
+            }
+            if (arrayNumeros[i] % 2 === 0) {
+                console.log(arrayNumeros[i]);
+            }
+        }
+
+        verificaPares(arrayNumeros);   
+   
+        //2 - Implemente a função de Fibonacci de forma recursiva (100XP);
+
+        function fibonacci(numero) {
+            if(numero <=1) return 1;
+            return fibonacci(numero -1) + fibonacci(numero -2);
+        }
+
+        console.log(fibonacci(5));
+
+        //3 - Crie um array de objetos (pelo menos 5 itens) e implemente map, filter e reduce que façam sentido para o contexto escolhido (300XP).
+
+        const atletas = [
+            {nome: "Maria", idade: 28, medalhas: 10},
+            {nome: "Gustavo", idade: 19, medalhas: 3},
+            {nome: "Renata", idade: 23, medalhas: 6},
+            {nome: "Pedro", idade: 41, medalhas: 23},
+            {nome: "Bianca", idade: 32, medalhas: 17}
+        ];
+
+        function mostraIdade(atletas) {
+            return atletas.map((valor) => {
+                return valor.idade;
+            })
+        }
+
+        console.log(mostraIdade(atletas));
+
+        let filtraIdade = atletas.filter(MostraMais30);
+
+        function MostraMais30(atletas) {
+            return atletas.idade > 30;
+        }
+
+        console.log(filtraIdade);
+
+        const somaMedalhas = atletas.reduce ((somatoria, item) => somatoria + item.medalhas, 0);
+
+        console.log(somaMedalhas);
+    </script>
+  </body>
+</html>
