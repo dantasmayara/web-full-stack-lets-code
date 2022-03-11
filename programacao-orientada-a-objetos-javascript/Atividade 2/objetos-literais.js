@@ -9,14 +9,14 @@ const pessoa = {
     },
     comer: function() {
         if (this.kcal.atual == this.kcal.max) {
-            return "Você ingeriu 7.000 kcal e ganhou 1kg! Vá treinar!";
+            return "Você já ingeriu 7.000 kcal e ganhou 1kg! Vá treinar!";
         } else {
             return ++this.kcal.atual;
         }
     },
     treinar: function() {
         if (this.kcal.atual == this.kcal.min) {
-            return "Você gastou 7.000 kcal e eliminou 1kg! Parabéns!";
+            return "Você já gastou 7.000 kcal e eliminou 1kg! Parabéns!";
         } else {
             return --this.kcal.atual;
         }
