@@ -20,6 +20,12 @@ const pessoa = {
         } else {
             return --this.kcal.atual;
         }
+    },
+    trabalhar: function () {
+        return "projetos";
+    },
+    pintar: function () {
+        return "quadros";
     }
 };
 
