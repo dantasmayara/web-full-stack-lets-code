@@ -51,8 +51,8 @@ Conta.prototype.extrato = function() {
   let extrato = "Extrato:";
   extrato += `\nSaldo atual = ${this.saldo}`
   for(i in this.lancamentos){
-      let teste = `\n\n${JSON.stringify(this.lancamentos[i]).replace(",", " -").replaceAll(",","\n")}`
-      extrato += teste
+      let teste = `\n\n${JSON.stringify(this.lancamentos[i]).replace(",", " -").replaceAll(",","\n")}`;
+      extrato += teste;
   }
   return extrato;
 }
