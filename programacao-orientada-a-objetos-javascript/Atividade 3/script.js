@@ -38,7 +38,7 @@ Conta.prototype.transferir = function(valor, conta) {
   if (saque) {
     conta.depositar(valor, this.conta);
   }
-  this.lancamentos.push(new this.Lancar(valor, "tranferência", this.saldo, conta.conta, this.conta, saque));
+  this.lancamentos.push(new this.Lancar(valor, "Transferência", this.saldo, conta.conta, this.conta, saque));
   return this.saldo;
 }
 
