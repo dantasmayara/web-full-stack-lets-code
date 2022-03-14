@@ -37,13 +37,13 @@ Conta.prototype.transferir = function(valor, conta) {
   return this.saldo;
 }
 
-Conta.prototype.Lancar = function(valor, lancamentos, saldo, contaDestino= null, contaOrigem= null, concluido= true) {
+Conta.prototype.Lancar = function(valor, lancamentos, saldo, contaDestino= null, contaOrigem= null, aprovacao= true) {
   this.data = new Date(Date.now()).toUTCString();
   this.valor = valor;
   this.lancamentos = lancamentos;
   this.contaOrigem = contaOrigem;
   this.contaDestino = contaDestino;
-  this.concluido = concluido;
+  this.aprovacao = aprovacao;
   this.saldoFinal = saldo;
 }
 
