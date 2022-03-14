@@ -10,7 +10,7 @@ function Conta(agencia=0, numero=0, digito=0, saldo=0, titular=null, tipo="CC") 
 
 Conta.prototype.banco = "C6 Bank";
 
-Conta.prototype.depositar = function(valor) {
+Conta.prototype.depositar = function(valor, contaOrigem = null) {
   this.saldo += valor;
   this.lancamentos.push(new this.Lancar(valor, "Depósito", this.saldo, this.conta, this.contaOrigem));
   return this.saldo;
@@ -29,7 +29,7 @@ Conta.prototype.sacar = function(valor) {
 }
 
 Conta.prototype.transferir = function(valor, conta) {
-  saque = this.sacar(valor)[0]
+  saque = this.sacar(valor)[0];
   if (saque) {
     conta.depositar(valor, this.conta);
   }
@@ -48,22 +48,27 @@ Conta.prototype.Lancar = function(valor, lancamentos, saldo, contaDestino= null,
 }
 
 Conta.prototype.extrato = function() {
-  console.log ("Extrato: " + this.lancamentos);
+  let extrato = "Extrato:";
+  extrato += `\nSaldo atual = ${this.saldo}`
+  for(i in this.lancamentos){
+      let teste = `\n\n${JSON.stringify(this.lancamentos[i]).replace(",", " -").replaceAll(",","\n")}`
+      extrato += teste
+  }
+  return extrato;
 }
 
 const contaJoao = new Conta (336, 1234, 0, 1500, "Joao");
 const contaMaria = new Conta (336, 4567, 8, 3000, "Maria", "CP");
 
 console.log(contaJoao);
-console.log(contaJoao.extrato());
 console.log(contaJoao.banco);
 console.log(contaJoao.depositar(1000));
 console.log(contaJoao.sacar(1900));
 console.log(contaJoao.sacar(2));
 console.log(contaJoao.transferir(98, contaMaria));
+console.log(contaJoao.extrato());
 
 console.log(contaMaria);
-console.log(contaMaria.extrato());
 console.log(contaMaria.banco);
 console.log(contaMaria.depositar(225));
 console.log(contaMaria.sacar(3200));
