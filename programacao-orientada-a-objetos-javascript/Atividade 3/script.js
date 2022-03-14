@@ -16,10 +16,9 @@ function Conta(agencia=0, numero=0, digito=0, saldo=0, titular=null, tipo="CC", 
 Conta.prototype.banco = "C6 Bank";
 
 Conta.prototype.depositar = function(valor) {
-  let deposito = true;
   this.saldo += valor;
-  this.lancamentos.push(new this.Lancar(valor, "Depósito", this.saldo, null, this.conta, deposito));
-  return [deposito, this.saldo];
+  this.lancamentos.push(new this.Lancar(valor, "Depósito", this.saldo, this.conta));
+  return [this.saldo];
 }
 
 Conta.prototype.sacar = function(valor) {
@@ -39,7 +38,7 @@ Conta.prototype.transferir = function(valor, conta) {
   if (saque) {
     conta.depositar(valor, this.conta);
   }
-  this.lancamentos.push(new this.Lancar(valor, "tranferência", this.saldo, conta.conta, this.conta, saque0));
+  this.lancamentos.push(new this.Lancar(valor, "tranferência", this.saldo, conta.conta, this.conta, saque));
   return this.saldo;
 }
 
@@ -51,6 +50,10 @@ Conta.prototype.Lancar = function(valor, lancamentos, saldo, contaDestino= null,
   this.contaDestino = contaDestino;
   this.concluido = concluido;
   this.saldoFinal = saldo;
+}
+
+Conta.prototype.extrato = function(lancamentos) {
+  return this.lancamentos
 }
 
 const contaJoao = new Conta (336, 1234, 0, 1500, "Joao");
