@@ -1,8 +1,3 @@
-/* 1 - Implementar um método, onde a cada operação executada (ex: saque, deposito, transferência),
-    ela deve ser registrada dentro do objeto (lançamentos).
-    2 - implementar um método, onde todos os lançamentos sejam exibidos (extrato).
-*/
-
 function Conta(agencia=0, numero=0, digito=0, saldo=0, titular=null, tipo="CC") {
   this.agencia = agencia;
   this.numero = numero;
@@ -53,7 +48,7 @@ Conta.prototype.Lancar = function(valor, lancamentos, saldo, contaDestino= null,
 }
 
 Conta.prototype.extrato = function() {
-  console.log (this.lancamentos);
+  console.log ("Extrato: " + this.lancamentos);
 }
 
 const contaJoao = new Conta (336, 1234, 0, 1500, "Joao");
