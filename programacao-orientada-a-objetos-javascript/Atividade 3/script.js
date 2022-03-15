@@ -29,7 +29,7 @@ Conta.prototype.sacar = function(valor) {
 }
 
 Conta.prototype.transferir = function(valor, conta) {
-  saque = this.sacar(valor)[0];
+  saque = this.sacar(valor, true)[0];
   if (saque) {
     conta.depositar(valor, this.conta);
   }
