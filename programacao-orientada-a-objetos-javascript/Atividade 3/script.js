@@ -16,7 +16,7 @@ Conta.prototype.depositar = function(valor, contaOrigem = null) {
   return this.saldo;
 }
 
-Conta.prototype.sacar = function(valor) {
+Conta.prototype.sacar = function(valor, transf = false) {
   let saque = false;
   if (this.saldo < valor) {
     console.error("Saldo insuficiente!");
@@ -24,8 +24,10 @@ Conta.prototype.sacar = function(valor) {
     saque = true;
     this.saldo -= valor;
   }
-  this.lancamentos.push(new this.Lancar(valor, "Saque", this.saldo, null, this.conta, saque));
-  return [saque, this.saldo];
+  if(!transf){
+    this.lancamentos.push(new this.Lancar(valor,"Saque",this.saldo,null,this.conta,saque));
+  }
+return [saque, this.saldo]
 }
 
 Conta.prototype.transferir = function(valor, conta) {
