@@ -40,12 +40,14 @@ Conta.prototype.sacar = function(valor, transf = false) {
 return [saque, this.saldo]
 }
 
-Conta.prototype.transferir = function(valor, conta) {
+Conta.prototype.transferir = function(valor, contaDestino) {
   saque = this.sacar(valor, true)[0];
   if (saque) {
-    conta.depositar(valor, this.conta);
+      contaDestino.depositar(valor, this.conta);
   }
-  this.lancamentos.push(new this.Lancar(valor, "Transferência", this.saldo, conta.conta, this.conta, saque));
+  numContaDest = contaDestino.numero+'-'+contaDestino.digito;
+  numContaOrig = this.numero+'-'+this.digito;
+  this.lancamentos.push(new this.Lancar(valor, "Transferência", this.saldo, numContaDest, numContaOrig, saque));
   return this.saldo;
 }
 
