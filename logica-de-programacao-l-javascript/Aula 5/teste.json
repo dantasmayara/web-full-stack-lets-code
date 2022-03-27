@@ -1,0 +1,14 @@
+[
+    {
+        "palavra": "Luís Boladão",
+        "tema": "melhor professor da vida"
+    },
+    {
+        "palavra": "Jaque Boladona",
+        "tema": "melhor professora da vida... depois do Luís"
+    },
+    {
+        "palavras": ["Luís Boladão", "Jaque Boladona"],
+        "tema": "melhores professores da vida"
+    }
+]

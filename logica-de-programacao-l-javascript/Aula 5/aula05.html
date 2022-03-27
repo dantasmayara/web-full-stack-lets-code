@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 05 - Funções de Alta Ordem</title>
+</head>
+<body>
+    <script>
+        // 1 - Uma função que recebe outra como parâmetro
+        const somar = (a, b) => a + b;
+        const subtrair = (a, b) => a - b;
+        const multiplicar  = (a, b) => a * b;
+        const dividir = (a, b) => b > 0 ? a / b : NaN;
+
+        // console.log(somar(1,4));
+        // console.log(subtrair(1,4));
+        // console.log(multiplicar(3,4));
+        // console.log(dividir(2,6));
+
+        const calcular = (operacao, a, b) => operacao(a, b);
+
+        console.log(somar);
+
+        calcular(somar, 1, 4);
+        calcular(subtrair, 1, 4);
+        calcular(multiplicar, 3, 4);
+        calcular(dividir, 2, 6);
+
+        const media = (a,b) => {
+            return calcular(
+                dividir, // função "dividir"
+                calcular(somar, a, b), // numerador: resultado da soma
+                2 // denominador
+            );
+        }
+
+        // 2 - Uma função que retorna outra DEFINIÇÃO de função
+        const createFormatContatoFor = (software) => {
+            switch(software) {
+                case "software1":
+                    return contato => JSON.stringify(contato);
+                case "software2":
+                    return contato => `${contato.nome}/${contato.telefone}`;
+            }
+        }
+
+        let contato = createFormatContatoFor("software1");
+        console.log(contato({
+            nome: "Luís Boladão",
+            telefone: "02170708888"
+        }));
+
+        const luis = {
+            nome: "Luís Boladão",
+            telefone: "02170708888"
+        };
+        console.log(luis.toString());
+
+        const json = `{"nome":"Luís Boladão","telefone":"02170708888"}`;
+        console.log(JSON.parse(json));
+
+        // Recursão
+
+        // Implementação iterativa
+        function mostra_string(string) {
+            // for (let i=0; i<string.length; i++) {
+            // }
+            for (let char of string) {
+                console.log(char);
+            }
+        }
+
+        // Implementação recursiva
+        function mostra_string_rec(string) {
+            if (string == "")
+                return;
+            console.log(string[0], string);
+            mostra_string_rec(string.substring(1));
+            console.log(string[0], string);
+        }
+
+        // mostra_string("boladão");
+        // mostra_string_rec("boladão");
+
+        function fatorial(n) {
+            let res = 1;
+            for (let i=2; i<=n; i++) {
+                res = res * i;
+            }
+            return res;
+        }
+
+        function fatorial_rec(n) {
+            if (n==1) return 1;
+            return n * fatorial(n-1);
+        }
+
+        console.log(fatorial_rec(5));
+    </script>
+</body>
+</html>
