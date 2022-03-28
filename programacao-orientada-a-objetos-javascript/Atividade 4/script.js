@@ -38,9 +38,8 @@ const MODULE = (function () {
         menos: calculadora.subContador,
         vezes: calculadora.multContador,
         dividido: calculadora.divContador
-
     }
-})();
+}) ();
 
 console.log(MODULE);
 
