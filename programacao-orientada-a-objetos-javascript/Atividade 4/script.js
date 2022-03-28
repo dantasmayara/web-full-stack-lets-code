@@ -59,9 +59,9 @@ if (sinal == "*") {
 
 while (y == 0) {
     if (sinal == "/") {
-        alert(MODULE.divContador(x, y));
+        alert(MODULE.dividido(x, y));
         x = parseFloat(prompt("Insira o primeiro número:"));
         y = parseFloat(prompt("Insira o segundo número:"));
     }
 }
-alert(MODULE.divContador(x, y));
+alert(MODULE.dividido(x, y));
