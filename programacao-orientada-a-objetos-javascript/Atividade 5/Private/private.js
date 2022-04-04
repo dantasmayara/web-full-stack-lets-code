@@ -1,5 +1,5 @@
 class TV {
-    constructor(canal = emissoras, volume=0, ligada=false) {
+    constructor(canal=0, volume=0, ligada=false) {
       this.emissoras = ["Cultura", "SBT", "Globo", "Record", "Band"];
       this.canal = this.emissoras;
       this.ligada = ligada;
