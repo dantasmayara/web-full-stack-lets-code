@@ -1,13 +1,8 @@
 class TV {
-    constructor(canal=null, volume=0, ligada=false) {
-      this.canal = {
-        2: "CULTURA",
-        5: "GLOBO",
-        7: "RECORD",
-        13: "BAND"
-      }
-      this.ligada = ligada;
-      this.volume = volume;
+    constructor(canal, volume, ligada) {
+      this.canal = canal,
+      this.ligada = ligada,
+      this.volume = volume
     }
 
     static msg = {

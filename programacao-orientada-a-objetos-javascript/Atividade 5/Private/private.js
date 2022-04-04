@@ -1,13 +1,8 @@
 class TV {
-    constructor(canal=null, volume=0, ligada=false) {
-      this.#canal = {
-        2: "CULTURA",
-        5: "GLOBO",
-        7: "RECORD",
-        13: "BAND"
-      }
-      this.#ligada = ligada;
-      this.#volume = volume;
+    constructor(canal, volume, ligada) {
+      this.#canal = canal,
+      this.#ligada = ligada,
+      this.#volume = volume
     }
 
     static msg = {
@@ -20,41 +15,29 @@ class TV {
     #volume
     #ligada
 
-    get canal() {
-        return this.#canal;
-    }
-    get ligada() {
-        return this.#ligada;
-    }
-    get volume() {
-        return this.#volume;
+    get liga() {
+        return this.#ligada = true;
     }
 
-    
-
-    liga() {
-        return this.ligada = true;
+    get desliga() {
+        return this.#ligada = false;
     }
 
-    desliga() {
-        return this.ligada = false;
-    }
-
-    mudaDeCanal(numero = this.#canal) {
+    get mudaDeCanal(numero = this.#canal) {
         if (this.#ligada) return this.#canal = numero;
         throw new Error(TV.msg.SINTONIZAR_EXCEP);
     }
 
-    aumentaVolume() {
+    get aumentaVolume() {
         if (this.#ligada) return this.#volume += 1;
         throw new Error(TV.msg.AUMENTAR_VOL_EXCEP);
     }
 
-    diminuiVolume() {
+    get diminuiVolume() {
         if (this.#ligada) return this.#volume -= 1;
         throw new Error(TV.msg.DIMINUIR_VOL_EXCEP);
     }
 }
 
-const philips = new TV(5, 57, (ligada = true));
+const philips = new TV(5, 57, true);
 console.log(philips);
