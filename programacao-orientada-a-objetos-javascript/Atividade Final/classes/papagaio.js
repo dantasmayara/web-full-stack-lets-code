@@ -3,10 +3,7 @@ import {Animal} from "./animal.js";
 class Papagaio extends Animal{
     constructor (nomecientifico='', classe='', familia='', animal=''){
         super(nomecientifico, classe, familia);
-        this.#nomecientifico= "Amazona aestiva"
-        this.#classe= "Aves";
-        this.#familia= "Psittacidae";
-        this.#animal = "papagaio";
+        this.#animal = animal;
     }
 
     #animal;
