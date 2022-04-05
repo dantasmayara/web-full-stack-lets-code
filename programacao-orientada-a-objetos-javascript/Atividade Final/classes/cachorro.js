@@ -1,10 +1,9 @@
 import {Animal} from "./animal.js";
 
 class Cachorro extends Animal{
-    constructor (nomecientifico='', classe='', familia='', protetor=true){
+    constructor (nomecientifico='', classe='', familia='', animal=''){
         super(nomecientifico, classe, familia);
-        this.#protetor = protetor;
-        this.#animal = "Cachorro";
+        this.#animal = animal;
     }
 
     #protetor;
@@ -19,6 +18,10 @@ class Cachorro extends Animal{
     brincar(){
         return "Jogar e pegar a bolinha.";
     };
+    info() {
+        return `O ${this.#animal} tem nome científico ${this.#nomecientifico}, é da classe dos ${this.#classe} 
+        e família dos ${this.#familia}.`;
+    } 
 }
 
 export {Cachorro};

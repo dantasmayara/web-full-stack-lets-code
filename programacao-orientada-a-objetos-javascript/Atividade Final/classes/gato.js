@@ -1,13 +1,11 @@
 import {Animal} from "./animal.js";
 
 class Gato extends Animal{
-    constructor (nomecientifico='', classe='', familia='', independente=true){
+    constructor (nomecientifico='', classe='', familia='', animal=''){
         super(nomecientifico, classe, familia);
-        this.#independente = independente;
-        this.#animal = "Gato";
+        this.#animal = animal;
     }
 
-    #independente;
     #animal;
 
     Gato.prototype.alimentar(){
@@ -19,6 +17,10 @@ class Gato extends Animal{
     brincar(){
         return "Estourar bolhas de sabão.";
     };
+    info() {
+        return `O ${this.#animal} tem nome científico ${this.#nomecientifico}, é da classe dos ${this.#classe} 
+        e família dos ${this.#familia}.`;
+    } 
 }
 
 export {Gato};
