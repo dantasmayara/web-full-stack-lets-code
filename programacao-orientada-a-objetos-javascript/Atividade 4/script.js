@@ -64,4 +64,5 @@ while (y == 0) {
         y = parseFloat(prompt("Insira o segundo número:"));
     }
 }
+
 alert(MODULE.dividido(x, y));
