@@ -23,7 +23,7 @@ class TV {
         return this.#ligada = false;
     }
 
-    get mudaDeCanal(numero = this.#canal) {
+    get mudaDeCanal() {
         if (this.#ligada) return this.#canal = numero;
         throw new Error(TV.msg.SINTONIZAR_EXCEP);
     }
@@ -36,6 +36,10 @@ class TV {
     get diminuiVolume() {
         if (this.#ligada) return this.#volume -= 1;
         throw new Error(TV.msg.DIMINUIR_VOL_EXCEP);
+    }
+
+    set mudaDeCanal(numero = this.#canal) {
+        return this.#canal = numero;
     }
 }
 
