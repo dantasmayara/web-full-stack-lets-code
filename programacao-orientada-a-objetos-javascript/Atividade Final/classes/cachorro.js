@@ -23,4 +23,4 @@ class Cachorro extends Animal{
     } 
 }
 
-export {Cachorro};
+export {Cachorro

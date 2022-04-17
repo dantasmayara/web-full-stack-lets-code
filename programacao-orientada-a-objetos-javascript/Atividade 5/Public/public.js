@@ -37,3 +37,10 @@ class TV {
 
 const philips = new TV(5, 57, (ligada = true));
 console.log(philips);
+console.log(philips.aumentaVolume());
+console.log(philips.mudaDeCanal(1));
+console.log(philips.mudaDeCanal(8));
+console.log(philips.mudaDeCanal());
+console.log(philips);
+console.log(philips.diminuiVolume());
+console.log(philips.diminuiVolume());
