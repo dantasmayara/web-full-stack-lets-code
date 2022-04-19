@@ -17,6 +17,9 @@ class Cachorro extends Animal{
     brincar(){
         return "Jogar e pegar a bolinha.";
     };
+    interagir(){
+        return `Chame o ${this.#animal} para alguma atividade!`
+    }
 }
 
 export {Cachorro};

@@ -16,7 +16,10 @@ class Papagaio extends Animal{
     };
     brincar(){
         return "Voar e pousar nos poleiros.";
-    };   
+    };
+    interagir(){
+        return `Chame o ${this.#animal} para alguma atividade!`
+    }   
 }
 
 export {Papagaio};
