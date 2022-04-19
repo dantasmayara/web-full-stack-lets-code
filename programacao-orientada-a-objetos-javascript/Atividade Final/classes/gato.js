@@ -17,10 +17,6 @@ class Gato extends Animal{
     brincar(){
         return "Estourar bolhas de sabão.";
     };
-    info() {
-        return `O ${this.#animal} tem nome científico ${this.#nomecientifico}, é da classe dos ${this.#classe} 
-        e família dos ${this.#familia}.`;
-    } 
 }
 
 export {Gato};

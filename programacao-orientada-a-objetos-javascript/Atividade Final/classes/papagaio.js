@@ -16,11 +16,7 @@ class Papagaio extends Animal{
     };
     brincar(){
         return "Voar e pousar nos poleiros.";
-    };
-    info() {
-        return `O ${this.#animal} tem nome científico ${this.#nomecientifico}, é da classe dos ${this.#classe} 
-        e família dos ${this.#familia}.`;
-    }    
+    };   
 }
 
 export {Papagaio};
